@@ -145,10 +145,10 @@ html[data-theme="light"] .photo-hero .planet-halo::after { border-color: rgba(25
 /* «Карта звёздного мира» в светлой теме: бледно-лавандовое небо и тёмный текст
    (сама галактика перекрашивается в galaxy.js) */
 html[data-theme="light"] .world-banner.pixel-world {
-  border-color: rgba(124, 77, 214, 0.22);
-  background: radial-gradient(ellipse at 70% 50%, #ffffff 0%, #f8f0dc 46%, #ecdfc0 100%);
+  border-color: rgba(15, 143, 134, 0.28);
+  background: radial-gradient(ellipse at 70% 50%, #ffffff 0%, #e6f5ee 46%, #cfe8dd 100%);
   color: var(--ink);
-  box-shadow: 0 24px 50px -34px rgba(60, 30, 120, 0.4);
+  box-shadow: 0 24px 50px -34px rgba(10, 90, 85, 0.4);
 }
 
 html[data-theme="light"] .pixel-world::after {
@@ -157,19 +157,19 @@ html[data-theme="light"] .pixel-world::after {
 
 html[data-theme="light"] .pixel-world h2 { color: var(--ink); }
 html[data-theme="light"] .pixel-world p { color: var(--ink-2); }
-html[data-theme="light"] .pixel-world .eyebrow { color: var(--accent-2); }
+html[data-theme="light"] .pixel-world .eyebrow { color: #0f8f86; }
 
 html[data-theme="light"] .pixel-world .button.light {
-  background: #7c4dd6;
+  background: #14a095;
   color: #fff;
-  box-shadow: 0 3px #55309a;
+  box-shadow: 0 3px #0b6f67;
 }
 
-html[data-theme="light"] .pixel-world .button.light:hover { background: #8d62e0; }
+html[data-theme="light"] .pixel-world .button.light:hover { background: #1fb5a8; }
 
 @media (max-width: 760px) {
   html[data-theme="light"] .world-banner.pixel-world {
-    background: linear-gradient(#ffffff, #f0e4c8);
+    background: linear-gradient(#ffffff, #d6ece2);
   }
 
   html[data-theme="light"] .pixel-world::after {
@@ -504,9 +504,9 @@ html[data-theme="light"] .law-card strong { color: var(--ink); }
 html[data-theme="light"] .law-card small { color: var(--ink-2); }
 
 html[data-theme="light"] .rule-cta {
-  background: #7c4dd6;
+  background: #14a095;
   color: #fff;
-  box-shadow: 0 3px #55309a;
+  box-shadow: 0 3px #0b6f67;
 }
 
 html[data-theme="light"] .rule-cta:hover { background: #8d62e0; }
@@ -746,3 +746,15 @@ html[data-theme="light"] .astrum-site .site-header .main-nav.open a.active {
 }
 
 html[data-theme="light"] .astrum-site .site-header .main-nav a.active .nav-icon { color: #04231f; }
+
+/* Свод правил ELIZIUM — светлая тема */
+html[data-theme="light"] .rules-doc { border-color: rgba(60, 45, 20, 0.14); background: rgba(60, 45, 20, 0.14); }
+html[data-theme="light"] .rules-doc > div { background: #fffaf0; }
+html[data-theme="light"] .rules-doc small { color: #7d7260; }
+html[data-theme="light"] .rules-doc strong { color: #2b2418; }
+html[data-theme="light"] .rule-label-inline strong,
+html[data-theme="light"] .rules-outro strong { color: #0f8f86; }
+html[data-theme="light"] .rules-outro { border-color: rgba(15, 143, 134, 0.45); }
+html[data-theme="light"] .rules-outro span { color: #5d5444; }
+html[data-theme="light"] .intro-link { color: #0f8f86; }
+html[data-theme="light"] .world-banner.pixel-world .world-banner-copy .eyebrow { color: #0f8f86; }

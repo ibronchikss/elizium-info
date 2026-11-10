@@ -294,7 +294,8 @@
 /* Фон рисует assets/js/galaxy.js на canvas; здесь — тёмное «космическое» основание, сам canvas
    и затемнение слева, чтобы текст читался. */
 .world-banner.pixel-world {
-  background: radial-gradient(ellipse at 70% 50%, #2b1637 0%, #181220 46%, #0e0d14 100%);
+  background: radial-gradient(ellipse at 70% 50%, #0f3a38 0%, #0c1f20 46%, #0a1112 100%);
+  border-color: rgba(92, 224, 207, 0.22);
 }
 
 .pixel-world .galaxy {
@@ -318,7 +319,7 @@
   .world-banner.pixel-world {
     padding-bottom: 250px;
     align-items: flex-start;
-    background: linear-gradient(#0e0d14, #181220);
+    background: linear-gradient(#0a1112, #0c1f20);
   }
 
   .pixel-world::after {
@@ -3145,3 +3146,75 @@ html.first-visit .astrum-site .site-header {
 @media (prefers-reduced-motion: reduce) {
   .to-top { transition: none; }
 }
+
+/* ===== Свод правил ELIZIUM: карточка документа, наказания, финал ===== */
+.rules-doc {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  margin: 0 0 18px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.1);
+}
+.rules-doc > div {
+  display: grid;
+  gap: 3px;
+  align-content: start;
+  padding: 13px 16px;
+  background: rgba(20, 16, 30, 0.82);
+}
+.rules-doc small {
+  color: #8f87a0;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.rules-doc strong {
+  color: #f1ecfa;
+  font-size: 14px;
+  line-height: 1.35;
+}
+.rules-doc > div:first-child { grid-column: 1 / -1; }
+.rules-doc > div:first-child strong { font-size: 16px; }
+
+.rule-label-inline { margin: 10px 0 0 !important; }
+.rule-label-inline strong { color: var(--planet); }
+
+.rule-bullets.rule-punish li { padding-left: 0; }
+.rule-bullets.rule-punish li::before { display: none; }
+.rule-bullets.rule-punish .rule-chip { margin-right: 6px; vertical-align: 1px; }
+
+.rules-outro {
+  display: grid;
+  gap: 4px;
+  justify-items: center;
+  margin: 26px 0 8px;
+  padding: 26px 18px;
+  text-align: center;
+  border: 1px dashed rgba(92, 224, 207, 0.4);
+  border-radius: 20px;
+}
+.rules-outro strong {
+  color: var(--planet);
+  font-family: "Montserrat", system-ui, sans-serif;
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+}
+.rules-outro span { color: #b9b0c8; font-size: 14px; }
+@media (max-width: 760px) {
+  .rules-doc { grid-template-columns: 1fr 1fr; }
+  .rules-doc > div { padding: 11px 13px; }
+  .rules-doc strong { font-size: 13px; }
+}
+
+.intro-link { display: inline; color: var(--planet); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 1100px) { .rules-doc { grid-template-columns: 1fr 1fr; } }
+
+/* «Карта звёздного мира»: цвета логотипа */
+.pixel-world .eyebrow { color: var(--planet); }
+.pixel-world .button.light { background: var(--planet); color: #04231f; box-shadow: 0 3px #1aa79c; }
+.pixel-world .button.light:hover { background: #7aeadb; }

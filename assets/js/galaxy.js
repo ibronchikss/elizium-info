@@ -29,18 +29,18 @@
   // чтобы звёзды и «пыль» не терялись на светлом фоне (переключается вместе с темой сайта).
   var PALETTES = {
     dark: {
-      core: ["#ffe6fa", "#ffc4f1", "#ff9be8"], inner: ["#fb51d0", "#e63fc0", "#ff7fe0"],
-      mid: ["#c616a7", "#b44ad8", "#9a5cf0"], outer: ["#7a6cf5", "#5a7bff", "#4f5fc4", "#6b3fa8"],
-      dust: ["#3a2a52", "#2f2447"],
-      starBright: "#ffffff", starMid: "#cfc4ff", starDim: "#8a82ad",
-      sparkCore: "#ffffff", sparkArm: "#cfc4ff", orbit: "#ffffff22"
+      core: ["#eafffb", "#b8f5ec", "#8aeedf"], inner: ["#5ce0cf", "#3fcfbe", "#7aeadb"],
+      mid: ["#1aa79c", "#2bb5a8", "#3cc2c9"], outer: ["#2a8fb0", "#3a9fd0", "#2c6f94", "#1f6f6a"],
+      dust: ["#1d3b3f", "#18312f"],
+      starBright: "#ffffff", starMid: "#b4f0e8", starDim: "#6f9f9a",
+      sparkCore: "#ffffff", sparkArm: "#b4f0e8", orbit: "#ffffff22"
     },
     light: {
-      core: ["#ffffff", "#ffd2f6", "#ff9be8"], inner: ["#f03cc4", "#d92fb4", "#ff6fdc"],
-      mid: ["#b3129a", "#a23fcf", "#8648e0"], outer: ["#6a5be8", "#4a6cf0", "#3f4fb4", "#5a3498"],
-      dust: ["#b9aee0", "#cbc1ea"],
-      starBright: "#5b46b8", starMid: "#8d7ce0", starDim: "#b7abdc",
-      sparkCore: "#6a3fd6", sparkArm: "#a595ee", orbit: "#5a3fa844"
+      core: ["#ffffff", "#b8f5ec", "#7ae6d8"], inner: ["#1fb5a8", "#14a095", "#4fd3c4"],
+      mid: ["#0f8f86", "#1a9fb0", "#2a8fb0"], outer: ["#2a78a8", "#1f8f9f", "#1f6f94", "#16665f"],
+      dust: ["#a6d8d2", "#c0e6e0"],
+      starBright: "#0f6f68", starMid: "#3fb0a5", starDim: "#9fd0ca",
+      sparkCore: "#0f8f86", sparkArm: "#6fd0c4", orbit: "#0f8f8644"
     }
   };
   var pal = PALETTES.dark;
@@ -106,7 +106,7 @@
     var orbits = [
       { rx: R * 0.3, c1: "#ffd9a0", c2: "#e8a24a", size: 3, sp: 0.5, ph: 0.6 },
       { rx: R * 0.5, c1: "#9fe3ff", c2: "#4aa7e8", size: 4, sp: -0.32, ph: 3.1 },
-      { rx: R * 0.72, c1: "#d9b8ff", c2: "#8a5be0", size: 3, sp: 0.2, ph: 5.2 }
+      { rx: R * 0.72, c1: "#d0faf4", c2: "#2bb5a8", size: 3, sp: 0.2, ph: 5.2 }
     ];
     orbits.forEach(function (o) { planets.push(o); });
 
@@ -117,7 +117,7 @@
     var hr = Math.min(R * 0.5, 52);
     var bands = [[1.0, 0.04], [0.82, 0.07], [0.64, 0.1], [0.46, 0.14], [0.3, 0.2]];
     bands.forEach(function (b) {
-      h.fillStyle = "rgba(251,81,208," + b[1] + ")";
+      h.fillStyle = "rgba(92,224,207," + b[1] + ")";
       var rx = hr * b[0], ry = rx * 0.78;
       for (var y = -Math.ceil(ry); y <= Math.ceil(ry); y++) {
         var span = Math.round(rx * Math.sqrt(Math.max(0, 1 - (y * y) / (ry * ry))));
@@ -128,7 +128,7 @@
     // Яркое ядро: круг из ступенчатых «колец»; на стыках — шахматная раскладка вместо плавного перехода
     var cr = Math.max(9, Math.round(R * 0.1)), cry = cr * 0.72;
     var rings = [
-      [1.0, "#fb51d0"], [0.8, "#ff7fe0"], [0.6, "#ffa9ec"], [0.42, "#ffd2f6"], [0.24, "#ffffff"]
+      [1.0, "#5ce0cf"], [0.8, "#7aeadb"], [0.6, "#a3f2e6"], [0.42, "#d0faf4"], [0.24, "#ffffff"]
     ];
     for (var yy = -Math.ceil(cry); yy <= Math.ceil(cry); yy++) {
       for (var xx = -cr; xx <= cr; xx++) {
@@ -227,7 +227,7 @@
     var pulse = reduceMotion ? 1 : (Math.floor(t / 1.2) % 2 === 0 ? 1 : 0);
     var arm = Math.max(10, Math.round(R * 0.16)) + pulse * 2;
     for (var ray = 1; ray <= arm; ray++) {
-      var tone = ray < arm * 0.4 ? "#ffffff" : ray < arm * 0.7 ? "#ffd2f6" : "#ff7fe0";
+      var tone = ray < arm * 0.4 ? "#ffffff" : ray < arm * 0.7 ? "#d0faf4" : "#7aeadb";
       rect(tone, cx + ray, cy); rect(tone, cx - ray, cy);
       if (ray <= arm * 0.7) { rect(tone, cx, cy + ray); rect(tone, cx, cy - ray); }
     }
