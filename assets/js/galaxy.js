@@ -1,9 +1,4 @@
-/*
- * ELIZIUM — пиксельная галактика в блоке «Карта звёздного мира» (только главная).
- * Рисуется на маленьком canvas (1 клетка = несколько пикселей экрана) и растягивается без сглаживания,
- * поэтому всё — звёзды, рукава, планеты и светящееся ядро — состоит из одинаковых квадратиков.
- * Это воссозданный с нуля декор, а не часть оригинального сайта.
- */
+
 (function () {
   "use strict";
 
@@ -13,9 +8,8 @@
 
   var ctx = canvas.getContext("2d");
   var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var FRAME_MS = 100; // ~10 кадров в секунду — «ступенчатое» движение, как у пиксель-арта
+  var FRAME_MS = 100;
 
-  // --- Детерминированный генератор: картинка одинакова при каждой загрузке ---
   function rng(seed) {
     return function () {
       seed |= 0; seed = (seed + 0x6d2b79f5) | 0;
@@ -25,8 +19,6 @@
     };
   }
 
-  // Палитра: от тёплого ядра цвета планеты до холодных краёв. Для светлой темы — отдельная,
-  // чтобы звёзды и «пыль» не терялись на светлом фоне (переключается вместе с темой сайта).
   var PALETTES = {
     dark: {
       core: ["#eafffb", "#b8f5ec", "#8aeedf"], inner: ["#5ce0cf", "#3fcfbe", "#7aeadb"],
@@ -58,7 +50,6 @@
     var rand = rng(90125);
     stars = []; sparks = []; arms = []; planets = [];
 
-    // Фоновые звёзды по всему блоку
     var starCount = Math.round((W * H) / 170);
     for (var i = 0; i < starCount; i++) {
       var bright = rand();
@@ -68,12 +59,11 @@
         tw: rand() < 0.35, ph: rand() * 6.283, sp: 0.6 + rand() * 1.6
       });
     }
-    // Крестики-вспышки
+
     for (var k = 0; k < 7; k++) {
       sparks.push({ x: 4 + ((rand() * (W - 8)) | 0), y: 4 + ((rand() * (H - 8)) | 0), ph: rand() * 6.283 });
     }
 
-    // Частицы спиральных рукавов
     var n = Math.round(R * R * 0.6);
     for (var j = 0; j < n; j++) {
       var u = rand();
@@ -82,7 +72,7 @@
       var disc = !bulge && kind < 0.46;
       var r, th, col;
       if (disc) {
-        // рассеянный диск между рукавами: плотнее к центру, редеет к краю
+
         r = R * Math.min(1, -Math.log(1 - rand() * 0.97) * 0.34) + 4;
         th = rand() * 6.283;
       } else if (bulge) {
@@ -102,7 +92,6 @@
       arms.push({ r: r, th: th, c: col });
     }
 
-    // Три маленькие планеты на орбитах вокруг ядра
     var orbits = [
       { rx: R * 0.3, c1: "#ffd9a0", c2: "#e8a24a", size: 3, sp: 0.5, ph: 0.6 },
       { rx: R * 0.5, c1: "#9fe3ff", c2: "#4aa7e8", size: 4, sp: -0.32, ph: 3.1 },
@@ -110,7 +99,6 @@
     ];
     orbits.forEach(function (o) { planets.push(o); });
 
-    // Мягкое свечение вокруг ядра — ступенчатое, чтобы тоже было «пиксельным»
     halo = document.createElement("canvas");
     halo.width = W; halo.height = H;
     var h = halo.getContext("2d");
@@ -125,7 +113,6 @@
       }
     });
 
-    // Яркое ядро: круг из ступенчатых «колец»; на стыках — шахматная раскладка вместо плавного перехода
     var cr = Math.max(9, Math.round(R * 0.1)), cry = cr * 0.72;
     var rings = [
       [1.0, "#5ce0cf"], [0.8, "#7aeadb"], [0.6, "#a3f2e6"], [0.42, "#d0faf4"], [0.24, "#ffffff"]
@@ -136,7 +123,7 @@
         if (dd > 1) continue;
         var idx = 0;
         for (var q = 0; q < rings.length; q++) if (dd <= rings[q][0]) idx = q;
-        // у границы кольца чередуем цвет с соседним, как дизеринг в пиксель-арте
+
         var colr = rings[idx][1];
         if (idx > 0 && dd > rings[idx][0] - 0.08 && (xx + yy) % 2 === 0) colr = rings[idx - 1][1];
         h.fillStyle = colr;
@@ -180,14 +167,12 @@
     ctx.clearRect(0, 0, W, H);
     if (halo) ctx.drawImage(halo, 0, 0);
 
-    // Звёзды фона
     for (var i = 0; i < stars.length; i++) {
       var s = stars[i];
       if (s.tw && Math.sin(t * s.sp + s.ph) < -0.35) continue;
       rect(s.c, s.x, s.y);
     }
 
-    // Рукава галактики (вся картина медленно вращается)
     var rot = reduceMotion ? 0 : t * 0.06;
     for (var j = 0; j < arms.length; j++) {
       var a = arms[j];
@@ -195,7 +180,6 @@
       rect(a.c, Math.round(cx + a.r * Math.cos(th)), Math.round(cy + a.r * Math.sin(th) * TILT));
     }
 
-    // Крестики-вспышки
     for (var k = 0; k < sparks.length; k++) {
       var p = sparks[k];
       var v = reduceMotion ? 1 : Math.sin(t * 1.3 + p.ph);
@@ -208,7 +192,6 @@
       }
     }
 
-    // Орбиты и планеты
     for (var o = 0; o < planets.length; o++) {
       var pl = planets[o];
       var ry = pl.rx * TILT;
@@ -223,7 +206,6 @@
       rect(pl.c1, px, py, pl.size - 1 || 1, pl.size - 1 || 1);
     }
 
-    // Лучи над ядром: крест, который раз в ~1,2 с «дышит» на клетку
     var pulse = reduceMotion ? 1 : (Math.floor(t / 1.2) % 2 === 0 ? 1 : 0);
     var arm = Math.max(10, Math.round(R * 0.16)) + pulse * 2;
     for (var ray = 1; ray <= arm; ray++) {
@@ -233,7 +215,6 @@
     }
   }
 
-  // --- Анимация: только пока блок виден на экране ---
   var visible = true, last = 0, raf = 0;
   function loop(now) {
     raf = requestAnimationFrame(loop);
@@ -245,7 +226,6 @@
   layout();
   if (!reduceMotion) raf = requestAnimationFrame(loop);
 
-  // при переключении темы сайта галактика перерисовывается в нужной палитре
   if ("MutationObserver" in window) {
     new MutationObserver(function () { build(); draw(performance.now() / 1000); })
       .observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });

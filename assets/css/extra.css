@@ -1,11 +1,5 @@
-/*
- * ASTRUM — дополнения к оригинальному style.css.
- * Подключается после него на главной и в магазине. Оригинальный CSS не менялся.
- */
 
-/* ===== Главная: фирменный бирюзовый цвет Elizium ===== */
-/* Бирюзовый берётся с логотипа Elizium (assets/images/elizium-wordmark.png): светлые грани ≈ #5ce0cf,
-   тени ≈ #1f8f89. Им покрашены слово ELIZIUM в заголовке и кнопка «Начать играть». */
+
 .astrum-home {
   --planet: #5ce0cf;
   --planet-light: #8ef0e2;
@@ -26,13 +20,9 @@
   background: var(--planet-light);
 }
 
-/* ===== Шапка: логотип и «капсула» при прокрутке ===== */
-/* Вверху страницы шапка — на всю ширину. Когда страницу прокручивают (main.js ставит класс
-   is-scrolled), она уменьшается и закругляется в парящую капсулу, как на референсе. */
 .astrum-site .site-header {
   width: auto;
-  /* Боковые и верхняя рамки есть всегда, но прозрачные: иначе при сжатии шапки они стартуют
-     с цвета текста (почти белого) и на долю секунды вспыхивает белая линия. */
+  
   border-top: 1px solid rgba(188, 152, 255, 0);
   border-left: 1px solid rgba(188, 152, 255, 0);
   border-right: 1px solid rgba(188, 152, 255, 0);
@@ -103,7 +93,6 @@
   }
 }
 
-/* Планшет и телефон (до 980px): меню-бургер, как в оригинале на телефоне — иначе «Начать игру» и меню не помещаются */
 @media (max-width: 980px) {
   .site-header {
     gap: 15px;
@@ -176,13 +165,11 @@
   }
 }
 
-/* Логотип в подвале */
 .footer-logo img {
   height: 46px;
   filter: none;
 }
 
-/* ===== Главная: карточки «О сервере» — фиолетовая обводка и подъём при наведении ===== */
 .feature-card {
   transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.3s ease, box-shadow 0.3s ease,
     background-color 0.3s ease;
@@ -212,7 +199,6 @@
   }
 }
 
-/* ===== Главная: два скриншота под лентой ===== */
 .gallery {
   display: grid;
   grid-template-columns: 1.65fr 1fr;
@@ -290,9 +276,6 @@
   }
 }
 
-/* ===== Главная: пиксельная галактика вместо карты ===== */
-/* Фон рисует assets/js/galaxy.js на canvas; здесь — тёмное «космическое» основание, сам canvas
-   и затемнение слева, чтобы текст читался. */
 .world-banner.pixel-world {
   background: radial-gradient(ellipse at 70% 50%, #0f3a38 0%, #0c1f20 46%, #0a1112 100%);
   border-color: rgba(92, 224, 207, 0.22);
@@ -327,7 +310,6 @@
   }
 }
 
-/* ===== Магазин: плашка оплаты, вкладки категорий ===== */
 .shop-toolbar a.notice:hover {
   background: #33283f;
   border-color: #8d6fb0;
@@ -360,7 +342,6 @@
   color: #20162e;
 }
 
-/* ===== Магазин: карточки с картинками ===== */
 .product-art.has-image {
   height: auto;
   aspect-ratio: 1 / 1;
@@ -380,7 +361,7 @@
 }
 
 .product-card .product-name {
-  min-height: 2.9em; /* выравнивает цены, если название в две строки */
+  min-height: 2.9em; 
 }
 
 .price-note small {
@@ -394,7 +375,6 @@
   margin-top: 0;
 }
 
-/* ===== Магазин: окно товара ===== */
 .modal.is-product {
   max-width: 600px;
 }
@@ -514,7 +494,6 @@
   }
 }
 
-/* ===== Меню: пункты крупнее ===== */
 .main-nav {
   gap: 30px;
   font-size: 16px;
@@ -533,7 +512,6 @@
   }
 }
 
-/* ===== Правила: поиск над «Содержанием», правила — на одной строке с поиском ===== */
 .rules-side {
   display: flex;
   flex-direction: column;
@@ -579,7 +557,6 @@
   }
 }
 
-/* ===== Главная: два скриншота меняются раз в 5 секунд (плавное затухание) ===== */
 .gallery-item img.gallery-img {
   position: absolute;
   inset: 0;
@@ -601,7 +578,6 @@
   }
 }
 
-/* Капсула шапки на средних экранах: шире, чтобы крупное меню помещалось */
 @media (min-width: 1101px) and (max-width: 1300px) {
   .astrum-site .site-header.is-scrolled {
     left: 5%;
@@ -609,7 +585,6 @@
   }
 }
 
-/* ===== Под вопросами: ссылки на соцсети ===== */
 .faq-links {
   margin-top: 56px;
 }
@@ -752,7 +727,6 @@
   .social-card:hover, .social-card:hover .social-icon, .social-card:hover .social-arrow { transform: none; }
 }
 
-/* ===== Правила: карточки разделов, номера пунктов и цветные плашки наказаний ===== */
 .rules-content {
   display: grid;
   gap: 22px;
@@ -763,7 +737,6 @@
   margin: 0;
 }
 
-/* главное и легенда наказаний */
 .rule-highlights {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -817,7 +790,6 @@
   text-transform: uppercase;
 }
 
-/* карточка раздела */
 .rules-content article.rule-section {
   position: relative;
   margin: 0;
@@ -890,7 +862,6 @@
   line-height: 1.5;
 }
 
-/* пункты */
 .rule-list,
 .rule-info {
   display: grid;
@@ -972,7 +943,6 @@
   background: #b794f6;
 }
 
-/* запрещено / разрешено */
 .rule-split {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1025,7 +995,6 @@
 
 .rule-col.is-good strong { color: #6fe6cb; }
 
-/* плашки наказаний */
 .rule-chips {
   display: flex;
   flex-wrap: wrap;
@@ -1051,7 +1020,6 @@
 .chip-admin { color: #cdb4ff; background: rgba(183, 148, 246, 0.14); border-color: rgba(183, 148, 246, 0.35); }
 .chip-tag { color: #b9b0c8; background: #ffffff0a; border-color: #ffffff1a; }
 
-/* законопроекты */
 .law-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1102,7 +1070,6 @@
   transform: translateY(-2px);
 }
 
-/* дополнительная информация */
 .rule-info li {
   display: grid;
   grid-template-columns: 14px 1fr;
@@ -1135,7 +1102,6 @@
   line-height: 1.7;
 }
 
-/* рекомендации */
 .rule-tips {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1179,7 +1145,6 @@
   line-height: 1.65;
 }
 
-/* содержание: активный раздел */
 .rules-toc a {
   transition: color 0.2s ease, transform 0.2s ease;
 }
@@ -1213,14 +1178,11 @@
   .rule-highlight:hover, .rule-cta:hover, .rules-toc a.is-active { transform: none; }
 }
 
-/* Обрезка по краям без создания «прокручиваемого» контейнера — иначе не работает прилипание
-   поиска и содержания на странице правил (position: sticky) */
 .astrum-site {
   overflow: hidden;
   overflow: clip;
 }
 
-/* ===== Цвета для новых блоков (светлая тема переопределяет их в light.css) ===== */
 :root {
   --bg: #101117;
   --surface: #1b1922;
@@ -1245,7 +1207,6 @@ html[data-theme="light"] {
   color-scheme: light;
 }
 
-/* ===== Шапка: «Начать игру» и переключатель темы ===== */
 .site-header {
   --hd-btn-bg: #0f0d14;
   --hd-btn-line: #3c354c;
@@ -1277,7 +1238,6 @@ html[data-theme="light"] {
   transition: border-color 0.25s ease, background-color 0.35s ease, color 0.25s ease;
 }
 
-/* блик, пробегающий по кнопке при наведении */
 .header-cta::after {
   content: "";
   position: absolute;
@@ -1299,7 +1259,6 @@ html[data-theme="light"] {
 .header-cta:hover::after {
   left: 130%;
 }
-
 
 .theme-toggle {
   position: relative;
@@ -1326,7 +1285,6 @@ html[data-theme="light"] {
   transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.3s ease;
 }
 
-/* показывается значок той темы, на которую переключит нажатие: в тёмной — солнце, в светлой — луна */
 html[data-theme="dark"] .theme-toggle .icon-moon,
 html:not([data-theme]) .theme-toggle .icon-moon {
   opacity: 0;
@@ -1338,7 +1296,6 @@ html[data-theme="light"] .theme-toggle .icon-sun {
   transform: rotate(80deg) scale(0.4);
 }
 
-/* плавная смена темы (main.js ставит класс theme-anim на 400 мс) */
 html.theme-anim,
 html.theme-anim *,
 html.theme-anim *::before,
@@ -1429,10 +1386,6 @@ html.theme-anim *::after {
   }
 }
 
-/* ===== Главная: вопросы ===== */
-/* Каждый вопрос — строка с крупным контурным номером слева и ответом справа,
-   без карточек и рамок. */
-/* Оригинальный стиль .faq (страница «Прочее») ограничивает ширину 850px — на главной блок во всю ширину */
 .astrum-home .faq {
   max-width: none;
 }
@@ -1499,7 +1452,6 @@ html.theme-anim *::after {
   line-height: 1.2;
 }
 
-/* Как зайти на сервер — три шага на пунктирной линии */
 .join-steps {
   position: relative;
   display: grid;
@@ -1572,7 +1524,6 @@ html.theme-anim *::after {
   line-height: 1.75;
 }
 
-/* Сколько длится сезон — крупная цифра и «билеты» со всеми сезонами */
 .season-lead {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -1661,7 +1612,6 @@ html.theme-anim *::after {
   background: var(--surface);
 }
 
-/* полоска внизу строки: длина — длительность сезона (самый долгий — на всю ширину) */
 .ledger-row::before {
   content: "";
   position: absolute;
@@ -1738,7 +1688,6 @@ html.theme-anim *::after {
   70%, 100% { box-shadow: 0 0 0 9px rgba(92, 224, 207, 0); }
 }
 
-/* появление (main.js ставит faq-ready, затем faq-in, когда блок виден) */
 .faq-ready .ledger-row::before { transform: scaleX(0); }
 .faq-in .ledger-row::before { transform: scaleX(var(--w, 0)); }
 .faq-in .ledger-row:nth-child(2)::before { transition-delay: 0.22s; }
@@ -1838,14 +1787,12 @@ html.theme-anim *::after {
   }
 }
 
-/* ===== Подвал: без значков соцсетей рядом с логотипом ===== */
 .footer-bottom {
   flex-wrap: wrap;
   align-items: center;
   gap: 10px 28px;
 }
 
-/* ===== Правила: плашки наказаний над правилами — кнопки-фильтры ===== */
 .rule-filter {
   font-family: inherit;
   cursor: pointer;
@@ -1890,8 +1837,6 @@ html.theme-anim *::after {
   .rule-filter:hover { transform: none; }
 }
 
-/* ===== Правила: законопроекты (карточки в стиле Discord) и их содержание ===== */
-/* спрайт с книгой для баннеров не занимает места */
 .bill-sprite {
   position: absolute;
   width: 0;
@@ -1899,7 +1844,6 @@ html.theme-anim *::after {
   overflow: hidden;
 }
 
-/* второй столбик содержания — под основным; цветная точка = цвет полоски карточки */
 .rules-toc-bills a {
   display: flex;
   align-items: center;
@@ -1928,7 +1872,6 @@ html.theme-anim *::after {
   font-size: 11px;
 }
 
-/* боковая колонка прилипает, но не длиннее экрана — иначе нижние ссылки нельзя достать */
 @media (min-width: 761px) {
   .rules-side {
     max-height: calc(100vh - 140px);
@@ -1946,7 +1889,6 @@ html.theme-anim *::after {
   }
 }
 
-/* заголовок блока */
 .bills-head {
   position: relative;
   padding: 28px 30px;
@@ -1999,7 +1941,6 @@ html.theme-anim *::after {
   transform: translateY(-2px);
 }
 
-/* карточка законопроекта */
 .rules-content article.bill {
   margin: 0;
   padding: 0;
@@ -2158,7 +2099,6 @@ html.theme-anim *::after {
   font-size: 13.5px;
 }
 
-/* упоминания, каналы, даты — как в Discord */
 .mention,
 .chan {
   padding: 0 4px;
@@ -2208,7 +2148,6 @@ html.theme-anim *::after {
   text-underline-offset: 3px;
 }
 
-/* баннер документа, как у картинок в Discord */
 .bill-banner {
   position: relative;
   display: grid;
@@ -2255,7 +2194,6 @@ html.theme-anim *::after {
   text-shadow: 0 0 14px rgba(255, 255, 255, 0.4);
 }
 
-/* ссылка «Законопроекты на этой странице» в разделе 10 */
 .rule-cta-ghost {
   margin-left: 10px;
   border: 1px solid rgba(183, 148, 246, 0.5);
@@ -2311,7 +2249,6 @@ html.theme-anim *::after {
   }
 }
 
-/* колонки правил не шире экрана: длинное слово/упоминание переносится, а не растягивает страницу */
 .rules-layout > * {
   min-width: 0;
 }
@@ -2327,7 +2264,6 @@ html.theme-anim *::after {
   overflow-wrap: anywhere;
 }
 
-/* ===== Главная: логотип-планета — своя картинка для каждой темы ===== */
 .hero-visual > img.logo-light {
   display: none;
 }
@@ -2340,7 +2276,6 @@ html[data-theme="light"] .hero-visual > img.logo-light {
   display: block;
 }
 
-/* ===== Правила: красивое содержание (основное и «Законопроекты») — без цветов законопроектов ===== */
 .rules-side .rules-toc {
   gap: 3px;
   padding: 18px 12px 12px;
@@ -2392,7 +2327,6 @@ html[data-theme="light"] .hero-visual > img.logo-light {
   background: #b794f6;
 }
 
-/* содержание законопроектов: номер в плашке, название, № документа */
 .toc-count {
   min-width: 22px;
   padding: 1px 7px;
@@ -2465,7 +2399,6 @@ html[data-theme="light"] .hero-visual > img.logo-light {
   }
 }
 
-/* компактнее: содержание помещается на экране */
 .rules-side .rules-toc a {
   padding: 6px 10px;
 }
@@ -2492,7 +2425,6 @@ html[data-theme="light"] .hero-visual > img.logo-light {
   }
 }
 
-/* законопроекты в содержании: цвет полоски у каждого законопроекта */
 .rules-toc-bills a .toc-n {
   background: color-mix(in srgb, var(--bill) 22%, transparent);
   color: var(--bill);
@@ -2527,7 +2459,6 @@ html[data-theme="light"] .hero-visual > img.logo-light {
   }
 }
 
-/* законопроекты в содержании: только цветная точка, без цифр */
 .rules-toc-bills .bill-dot {
   flex: none;
   width: 10px;
@@ -2542,18 +2473,12 @@ html[data-theme="light"] .hero-visual > img.logo-light {
   box-shadow: 0 0 12px 1px var(--bill);
 }
 
-/* ======================================================================
-   Правки от 5 ноября: фон и текст главной, меню, кнопка, шрифт
-   ====================================================================== */
-
-/* Цвет логотипа-планеты — на всём сайте (раньше был только на главной) */
 .astrum-site {
   --planet: #5ce0cf;
   --planet-light: #8ef0e2;
   --planet-shadow: #1f8f89;
 }
 
-/* ----- Меню: активный пункт обведён «кружочком» цвета логотипа ----- */
 .astrum-site .site-header .main-nav a {
   padding: 9px 20px;
   border: 2px solid transparent;
@@ -2573,7 +2498,6 @@ html[data-theme="light"] .hero-visual > img.logo-light {
   border-color: rgba(92, 224, 207, 0.38);
 }
 
-/* старое подчёркивание больше не нужно */
 .astrum-site .site-header .main-nav a.active::after,
 .astrum-site .site-header.is-scrolled .main-nav a.active::after {
   display: none;
@@ -2601,7 +2525,6 @@ html[data-theme="light"] .hero-visual > img.logo-light {
   }
 }
 
-/* ----- Кнопка «Начать играть» в шапке — цвета логотипа ----- */
 .astrum-site .site-header .header-cta {
   border-color: transparent;
   background: var(--planet);
@@ -2621,7 +2544,6 @@ html[data-theme="light"] .hero-visual > img.logo-light {
   background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.45), transparent);
 }
 
-/* ----- Главная: фон без сильного затемнения ----- */
 .astrum-home .photo-hero .hero-background {
   object-position: center 45%;
   filter: none;
@@ -2633,7 +2555,6 @@ html[data-theme="light"] .hero-visual > img.logo-light {
     linear-gradient(rgba(16, 17, 23, 0.28) 0%, rgba(16, 17, 23, 0) 22%, rgba(16, 17, 23, 0) 72%, rgba(16, 17, 23, 0.9) 94%, #101117 100%);
 }
 
-/* ----- Главная: заголовок шрифтом из фото 1 (Montserrat Black, плотный кернинг) ----- */
 .astrum-home .hero h1 {
   font-family: "Montserrat", "Inter Display", "Arial Black", sans-serif;
   font-weight: 900;
@@ -2644,7 +2565,6 @@ html[data-theme="light"] .hero-visual > img.logo-light {
   text-shadow: 0 6px 34px rgba(0, 0, 0, 0.45);
 }
 
-/* ----- Главная: текст описания крупнее ----- */
 .astrum-home .photo-hero .hero-copy > p {
   max-width: 640px;
   margin-top: 30px;
@@ -2655,8 +2575,6 @@ html[data-theme="light"] .hero-visual > img.logo-light {
   text-shadow: 0 2px 16px rgba(0, 0, 0, 0.55);
 }
 
-
-/* ----- Главная: «Без лицензии · Без приватов · Версия» крупнее ----- */
 .astrum-home .photo-hero .hero-facts {
   gap: 14px 30px;
   margin-top: 34px;
@@ -2682,7 +2600,6 @@ html[data-theme="light"] .hero-visual > img.logo-light {
     font-size: clamp(52px, 16vw, 84px);
   }
 
-  /* «ASTRUM» и «INFO» уже на разных строках (span — блок), <br> давал лишний пробел */
   .astrum-home .hero h1 br {
     display: none;
   }
@@ -2703,7 +2620,6 @@ html[data-theme="light"] .hero-visual > img.logo-light {
   }
 }
 
-/* ----- Главная: скриншоты стоят на месте бывшей бегущей строки — сразу под первым экраном ----- */
 .astrum-home .gallery {
   position: relative;
   z-index: 2;
@@ -2716,10 +2632,6 @@ html[data-theme="light"] .hero-visual > img.logo-light {
   }
 }
 
-/* ======================================================================
-   Шапка: всегда закруглённая капсула (без прямоугольной полосы), значки у пунктов,
-   при первом заходе капсула «выезжает» при прокрутке
-   ====================================================================== */
 .astrum-site .site-header.is-scrolled {
   left: 6%;
   right: 6%;
@@ -2767,7 +2679,6 @@ html[data-theme="light"] .hero-visual > img.logo-light {
   }
 }
 
-/* первый заход: пока не прокрутили страницу, шапки нет; при прокрутке она плавно выезжает сверху */
 .astrum-site .site-header {
   transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.6s ease, top 0.4s ease, left 0.4s ease,
     right 0.4s ease, height 0.4s ease, padding 0.4s ease, border-radius 0.4s ease, background-color 0.4s ease,
@@ -2780,7 +2691,6 @@ html.first-visit .astrum-site .site-header {
   pointer-events: none;
 }
 
-/* телефон, планшет и узкие ноутбуки (до 1240px): бургер и выпадающая панель с пунктами и значками */
 @media (max-width: 1240px) {
   .astrum-site .site-header .main-nav {
     display: none;
@@ -2875,7 +2785,6 @@ html.first-visit .astrum-site .site-header {
   html.first-visit .astrum-site .site-header { transform: none; }
 }
 
-/* ----- Главная: текст рядом с «ASTRUM INFO» чуть меньше ----- */
 .astrum-home .hero h1 {
   font-size: clamp(52px, 6vw, 96px);
 }
@@ -2912,7 +2821,6 @@ html.first-visit .astrum-site .site-header {
   }
 }
 
-/* подпись «IP СЕРВЕРА» читается на фоне-скриншоте (размер и вид как раньше) */
 .astrum-home .photo-hero .server-address small {
   color: #d3c8e0;
   text-shadow: 0 1px 10px rgba(0, 0, 0, 0.8);
@@ -2942,10 +2850,6 @@ html.first-visit .astrum-site .site-header {
   }
 }
 
-/* ======================================================================
-   Меню: при наведении — серая заливка, выбранный пункт — полностью закрашен
-   (вместо обводки-«кружочка»). Текст главной ещё чуть меньше.
-   ====================================================================== */
 .astrum-site .site-header .main-nav a {
   border-color: transparent;
 }
@@ -3006,9 +2910,6 @@ html.first-visit .astrum-site .site-header {
   }
 }
 
-/* ======================================================================
-   Мобильная версия: крупные зоны нажатия, сворачиваемое «Содержание», кнопка «Наверх»
-   ====================================================================== */
 .to-top {
   position: fixed;
   right: 16px;
@@ -3042,7 +2943,7 @@ html.first-visit .astrum-site .site-header {
 }
 
 @media (max-width: 760px) {
-  /* поля ввода не меньше 16px — иначе iPhone приближает страницу при фокусе */
+  
   .search input,
   .rules-search input,
   input[type="search"],
@@ -3100,7 +3001,6 @@ html.first-visit .astrum-site .site-header {
     min-height: 40px;
   }
 
-  /* «Содержание» и «Законопроекты» в правилах: свёрнуты, пока не нажмёшь на заголовок */
   .rules-side .rules-toc > .eyebrow {
     display: flex;
     align-items: center;
@@ -3147,7 +3047,6 @@ html.first-visit .astrum-site .site-header {
   .to-top { transition: none; }
 }
 
-/* ===== Свод правил ELIZIUM: карточка документа, наказания, финал ===== */
 .rules-doc {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -3214,7 +3113,239 @@ html.first-visit .astrum-site .site-header {
 .intro-link { display: inline; color: var(--planet); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
 @media (max-width: 1100px) { .rules-doc { grid-template-columns: 1fr 1fr; } }
 
-/* «Карта звёздного мира»: цвета логотипа */
 .pixel-world .eyebrow { color: var(--planet); }
 .pixel-world .button.light { background: var(--planet); color: #04231f; box-shadow: 0 3px #1aa79c; }
 .pixel-world .button.light:hover { background: #7aeadb; }
+
+.astrum-home .hero h1 .hero-sub {
+  display: block;
+  margin-top: 0.14em;
+  font-style: normal;
+  font-size: 0.5em;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  color: inherit;
+}
+.social-grid { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 900px) { .social-grid { grid-template-columns: 1fr; } }
+
+.qa-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 18px; margin: 34px 0 8px; }
+.qa-search { position: relative; flex: 1 1 280px; max-width: 420px; }
+.qa-search svg { position: absolute; left: 16px; top: 50%; width: 18px; height: 18px; transform: translateY(-50%); color: #8f87a0; pointer-events: none; }
+.qa-search input { width: 100%; height: 48px; padding: 0 16px 0 44px; color: inherit; font: inherit; font-size: 15px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); border-radius: 14px; outline: none; transition: border-color .2s, background .2s, box-shadow .2s; }
+.qa-search input::placeholder { color: #8f87a0; }
+.qa-search input:focus { border-color: var(--planet); background: rgba(92,224,207,.06); box-shadow: 0 0 0 3px rgba(92,224,207,.16); }
+.qa-tabs { display: flex; flex-wrap: wrap; gap: 8px; }
+.qa-tabs a { padding: 10px 16px; font-size: 13.5px; font-weight: 700; color: #cfc8dc; border: 1px solid rgba(255,255,255,.12); border-radius: 999px; transition: background .2s, color .2s, border-color .2s; }
+.qa-tabs a:hover { color: #04231f; background: var(--planet); border-color: var(--planet); }
+.qa-groups { display: grid; gap: 38px; margin-top: 30px; }
+.qa-group { scroll-margin-top: 110px; }
+.qa-group-title { display: flex; align-items: center; gap: 14px; margin: 0 0 16px; font-size: 21px; font-weight: 800; }
+.qa-group-title small { margin-left: auto; font-size: 12.5px; font-weight: 600; color: #8f87a0; letter-spacing: .04em; }
+.qa-gicon { display: grid; place-items: center; width: 42px; height: 42px; color: var(--planet); background: rgba(92,224,207,.12); border: 1px solid rgba(92,224,207,.28); border-radius: 12px; }
+.qa-gicon svg { width: 21px; height: 21px; }
+.qa-list { display: grid; gap: 12px; }
+.qa-item { position: relative; overflow: hidden; background: rgba(255,255,255,.035); border: 1px solid rgba(255,255,255,.09); border-radius: 18px; transition: border-color .25s, background .25s, box-shadow .25s; }
+.qa-item::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--planet); opacity: 0; transition: opacity .25s; }
+.qa-item:hover { border-color: rgba(92,224,207,.35); }
+.qa-item[open] { background: rgba(92,224,207,.06); border-color: rgba(92,224,207,.38); box-shadow: 0 18px 40px -28px rgba(0,0,0,.7); }
+.qa-item[open]::before { opacity: 1; }
+.qa-item summary { display: flex; align-items: center; gap: 14px; padding: 18px 20px; cursor: pointer; list-style: none; -webkit-tap-highlight-color: transparent; }
+.qa-item summary::-webkit-details-marker { display: none; }
+.qa-num { flex: none; min-width: 26px; font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; font-size: 12.5px; font-weight: 700; color: #8f87a0; }
+.qa-ico { flex: none; display: grid; place-items: center; width: 40px; height: 40px; color: var(--planet); background: rgba(92,224,207,.1); border-radius: 12px; }
+.qa-ico svg { width: 20px; height: 20px; }
+.qa-q { flex: 1; font-size: 16px; font-weight: 700; line-height: 1.35; }
+.qa-plus { flex: none; display: grid; place-items: center; width: 32px; height: 32px; color: #cfc8dc; border: 1px solid rgba(255,255,255,.14); border-radius: 50%; transition: transform .3s, background .25s, color .25s, border-color .25s; }
+.qa-plus svg { width: 16px; height: 16px; }
+.qa-item[open] .qa-plus { transform: rotate(45deg); color: #04231f; background: var(--planet); border-color: var(--planet); }
+.qa-a { padding: 0 20px 20px 100px; animation: qa-in .3s ease; }
+.qa-a p { margin: 0; max-width: 680px; font-size: 14.5px; line-height: 1.75; color: #b9b0c8; }
+.qa-a strong { color: #f1ecfa; }
+.qa-addrs { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.qa-addr { padding: 7px 12px; font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; font-size: 13px; color: var(--planet); background: rgba(92,224,207,.1); border: 1px solid rgba(92,224,207,.25); border-radius: 10px; user-select: all; }
+@keyframes qa-in { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+.qa-empty { margin: 0; padding: 26px; text-align: center; color: #b9b0c8; border: 1px dashed rgba(255,255,255,.2); border-radius: 18px; }
+.qa-support { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 22px; margin-top: 44px; padding: 28px; background: linear-gradient(135deg, rgba(92,224,207,.14), rgba(92,224,207,.03)); border: 1px solid rgba(92,224,207,.3); border-radius: 22px; }
+.qa-support-text { display: flex; align-items: center; gap: 18px; }
+.qa-support-ico { flex: none; display: grid; place-items: center; width: 54px; height: 54px; color: #04231f; background: var(--planet); border-radius: 16px; }
+.qa-support-ico svg { width: 26px; height: 26px; }
+.qa-support h3 { margin: 0; font-size: 20px; }
+.qa-support p { margin: 6px 0 0; font-size: 14.5px; color: #b9b0c8; }
+.qa-support-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.qa-support-actions .button svg { width: 18px; height: 18px; }
+.qa-chip { display: inline-flex; align-items: center; gap: 8px; height: 46px; padding: 0 18px; font-size: 14px; font-weight: 700; color: inherit; border: 1px solid rgba(255,255,255,.2); border-radius: 14px; transition: background .2s, border-color .2s, transform .2s; }
+.qa-chip svg { width: 18px; height: 18px; }
+.qa-chip:hover { background: rgba(255,255,255,.08); border-color: var(--planet); transform: translateY(-2px); }
+@media (max-width: 760px) {
+  .qa-item summary { gap: 10px; padding: 15px 14px; }
+  .qa-num { display: none; }
+  .qa-ico { width: 36px; height: 36px; }
+  .qa-q { font-size: 15px; }
+  .qa-a { padding: 0 16px 18px 16px; }
+  .qa-group-title { font-size: 18px; }
+  .qa-support { padding: 20px; }
+  .qa-support-actions { width: 100%; }
+  .qa-support-actions > * { flex: 1 1 auto; justify-content: center; }
+}
+@media (prefers-reduced-motion: reduce) { .qa-a { animation: none; } }
+.qa-num { display: none; }
+.qa-group-title { padding: 0; border: 0; line-height: 1.2; }
+.qa-group-title::before, .qa-group-title::after { display: none; }
+.qa-a { padding-left: 74px; }
+.qa-support .button.primary { color: #04231f; background: var(--planet); box-shadow: 0 3px var(--planet-shadow); }
+.qa-support .button.primary:hover { background: #7aeadb; }
+@media (max-width: 760px) { .qa-a { padding-left: 16px; } }
+.qa-page .qa-list { margin-top: 0; padding-top: 0; border: 0; }
+
+.brand-logo.brand-icon img { display: block; width: auto; height: 42px; filter: drop-shadow(0 0 14px rgba(92, 224, 207, 0.5)); transition: height 0.4s ease, transform 0.3s ease; }
+.brand-logo.brand-icon:hover img { transform: rotate(18deg) scale(1.06); }
+.site-header.is-scrolled .brand-logo.brand-icon img { height: 38px; }
+@media (min-width: 761px) { .brand-logo.brand-icon img { height: 42px; } }
+@media (max-width: 760px) { .brand-logo.brand-icon img { height: 36px; } .site-header.is-scrolled .brand-logo.brand-icon img { height: 34px; } }
+
+.astrum-home { position: relative; background: #04090a; }
+.astrum-home::before,
+.astrum-home::after { content: ""; position: absolute; top: -140px; width: 62%; height: 900px; pointer-events: none; z-index: 0; }
+.astrum-home::before { left: -22%; transform: rotate(-26deg); transform-origin: 50% 0; background: radial-gradient(ellipse 42% 62% at 50% 0%, rgba(92, 224, 207, 0.5), rgba(26, 167, 156, 0.16) 48%, transparent 72%); }
+.astrum-home::after { right: -22%; transform: rotate(26deg); transform-origin: 50% 0; background: radial-gradient(ellipse 42% 62% at 50% 0%, rgba(92, 224, 207, 0.46), rgba(26, 167, 156, 0.14) 48%, transparent 72%); }
+.astrum-home main { position: relative; z-index: 1; }
+.astrum-home main::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 780px; pointer-events: none; z-index: -1; background: radial-gradient(ellipse 46% 40% at 24% 36%, rgba(26, 167, 156, 0.2), transparent 70%); }
+
+.hz-hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.04fr); align-items: center; gap: clamp(28px, 5vw, 80px); padding-top: clamp(26px, 4vw, 56px); padding-bottom: clamp(44px, 6vw, 84px); }
+.hz-copy h1 { margin: 0; font-family: "Unbounded", "Montserrat", system-ui, sans-serif; font-weight: 800; font-size: clamp(29px, 3.9vw, 60px); line-height: 1.1; letter-spacing: -0.01em; background: linear-gradient(180deg, #ffffff 10%, #bfeee8 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; overflow-wrap: anywhere; }
+.hz-name { display: block; background: linear-gradient(90deg, #1aa79c 0%, #5ce0cf 55%, #a3f2e6 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.hz-copy p { max-width: 580px; margin: 22px 0 0; font-family: "Unbounded", "Montserrat", system-ui, sans-serif; font-weight: 400; font-size: clamp(13px, 1.12vw, 16px); line-height: 1.65; color: rgba(214, 232, 229, 0.66); }
+.hz-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+
+.hz-video { position: relative; display: block; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 22px; border: 1px solid rgba(255, 255, 255, 0.14); background: radial-gradient(ellipse at 50% 40%, #0f4a45, #071312 70%); box-shadow: 0 30px 70px -30px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(92, 224, 207, 0.08), 0 0 80px -20px rgba(92, 224, 207, 0.35); cursor: pointer; isolation: isolate; }
+.hz-video::before { content: ""; position: absolute; inset: 0; z-index: 0; background: url("../images/elezium-icon.png") center / 22% no-repeat; opacity: 0.35; }
+.hz-poster { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+.hz-video::after { content: ""; position: absolute; inset: 0; z-index: 2; background: linear-gradient(180deg, rgba(0, 0, 0, 0) 55%, rgba(0, 0, 0, 0.5)); pointer-events: none; }
+.hz-video:hover .hz-poster { transform: scale(1.04); }
+.hz-play { position: absolute; z-index: 3; left: 50%; top: 50%; display: grid; place-items: center; width: 86px; height: 86px; margin: -43px 0 0 -43px; color: #fff; background: rgba(8, 14, 14, 0.62); border: 1px solid rgba(255, 255, 255, 0.18); border-radius: 50%; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); box-shadow: 0 0 0 10px rgba(92, 224, 207, 0.12); transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease; }
+.hz-play svg { margin-left: 4px; }
+.hz-video:hover .hz-play { transform: scale(1.08); color: #04231f; background: #5ce0cf; box-shadow: 0 0 0 14px rgba(92, 224, 207, 0.2); }
+.hz-video-tag { position: absolute; z-index: 3; left: 16px; bottom: 14px; padding: 6px 12px; font-size: 12px; font-weight: 700; letter-spacing: 0.04em; color: #fff; background: rgba(0, 0, 0, 0.5); border: 1px solid rgba(255, 255, 255, 0.16); border-radius: 999px; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+.hz-frame { display: block; width: 100%; aspect-ratio: 16 / 9; border: 1px solid rgba(255, 255, 255, 0.14); border-radius: 22px; background: #000; box-shadow: 0 30px 70px -30px rgba(0, 0, 0, 0.9), 0 0 80px -20px rgba(92, 224, 207, 0.35); }
+
+.hz-stats { display: grid; grid-template-columns: repeat(3, auto); justify-content: start; gap: 28px clamp(36px, 6vw, 96px); padding-top: clamp(36px, 5vw, 64px); padding-bottom: clamp(44px, 6vw, 80px); border-top: 1px solid rgba(255, 255, 255, 0.1); }
+.hz-stats.wrap { border-top: 0; }
+.hz-stats::before { content: ""; grid-column: 1 / -1; height: 1px; margin: calc(-1 * clamp(36px, 5vw, 64px)) 0 0; background: rgba(255, 255, 255, 0.1); }
+.hz-stat { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; padding: 0; text-align: left; color: inherit; font: inherit; background: none; border: 0; }
+.hz-label { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; color: #f1f6f5; }
+.hz-label small { font-size: inherit; font-weight: inherit; letter-spacing: 0; text-transform: none; color: inherit; }
+.hz-num { font-family: "Unbounded", "Montserrat", system-ui, sans-serif; font-weight: 800; font-size: clamp(44px, 6.4vw, 92px); line-height: 1; letter-spacing: -0.02em; color: #fff; }
+.hz-num-ip { font-size: clamp(22px, 2.9vw, 42px); line-height: 1.25; letter-spacing: -0.01em; color: #5ce0cf; transition: color 0.2s; }
+.hz-sub { display: inline-flex; align-items: center; gap: 7px; font-size: 14px; color: rgba(214, 232, 229, 0.7); text-transform: none; letter-spacing: 0; font-weight: 500; }
+.hz-ip { cursor: pointer; align-self: stretch; justify-content: flex-start; }
+.hz-ip:hover .hz-num-ip { color: #a3f2e6; }
+.hz-ip .hz-label { margin-bottom: 0; }
+
+.hq { padding-top: 24px; }
+.hq-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 22px; }
+.hq-head h2 { margin: 0; font-family: "Montserrat", system-ui, sans-serif; font-weight: 800; font-size: clamp(32px, 4.4vw, 56px); line-height: 1.05; letter-spacing: -0.02em; color: #fff; }
+.hq-head h2 span { background: linear-gradient(90deg, #1aa79c, #5ce0cf); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.hq-all { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; font-size: 14px; font-weight: 700; color: #fff; background: rgba(255, 255, 255, 0.07); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; transition: background 0.2s, color 0.2s, transform 0.2s; }
+.hq-all:hover { color: #04231f; background: #5ce0cf; transform: translateY(-2px); }
+.hq-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.hq-card { --mx: 50%; --my: 0%; position: relative; display: flex; flex-direction: column; min-height: 440px; padding: 26px 24px 24px; overflow: hidden; background: #131817; border: 1px solid rgba(255, 255, 255, 0.07); border-radius: 22px; transition: border-color 0.3s, transform 0.3s; isolation: isolate; }
+.hq-card::before { content: ""; position: absolute; inset: 0; z-index: -1; opacity: 0; background: radial-gradient(320px circle at var(--mx) var(--my), rgba(92, 224, 207, 0.16), transparent 70%); transition: opacity 0.3s; }
+.hq-card::after { content: ""; position: absolute; right: 18px; top: 18px; width: 22px; height: 22px; background: linear-gradient(#5ce0cf, #5ce0cf) 0 0 / 8px 8px no-repeat, linear-gradient(#1aa79c, #1aa79c) 14px 0 / 8px 8px no-repeat, linear-gradient(#1aa79c, #1aa79c) 0 14px / 8px 8px no-repeat; opacity: 0.55; transition: opacity 0.3s; }
+.hq-card:hover { border-color: rgba(92, 224, 207, 0.4); transform: translateY(-4px); }
+.hq-card:hover::before { opacity: 1; }
+.hq-card:hover::after { opacity: 1; }
+.hq-tag { align-self: flex-start; margin-bottom: 14px; padding: 4px 10px; font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; font-size: 12px; font-weight: 700; color: #5ce0cf; background: rgba(92, 224, 207, 0.1); border: 1px solid rgba(92, 224, 207, 0.25); border-radius: 8px; }
+.hq-card h3 { margin: 0 0 22px; font-size: 19px; font-weight: 800; line-height: 1.25; color: #fff; }
+.hq-note { margin: auto 0 0; padding-top: 18px; font-size: 14px; line-height: 1.65; color: #a3b3b0; }
+
+.hq-steps { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
+.hq-steps li { position: relative; display: grid; grid-template-columns: 34px 1fr; gap: 14px; padding-bottom: 20px; }
+.hq-steps li:not(:last-child)::before { content: ""; position: absolute; left: 16px; top: 34px; bottom: 2px; width: 2px; background: repeating-linear-gradient(to bottom, rgba(92, 224, 207, 0.45) 0 4px, transparent 4px 8px); }
+.hq-dot { display: grid; place-items: center; width: 34px; height: 34px; font-size: 14px; font-weight: 800; color: #04231f; background: #5ce0cf; border-radius: 10px; }
+.hq-steps strong { display: block; margin-top: 6px; font-size: 15px; color: #fff; }
+.hq-steps p { margin: 5px 0 0; font-size: 13.5px; line-height: 1.6; color: #a3b3b0; }
+
+.hq-bars { display: flex; align-items: flex-end; gap: 10px; height: 150px; margin-bottom: 20px; }
+.hq-bar-col { display: flex; flex: 1; flex-direction: column; justify-content: flex-end; gap: 8px; height: 100%; }
+.hq-bar-wide { flex: 2.2; }
+.hq-bar-top { font-size: 12.5px; color: #a3b3b0; white-space: nowrap; }
+.hq-now { font-weight: 800; color: #fff; }
+.hq-bar { position: relative; display: block; overflow: hidden; border-radius: 8px; }
+.hq-bar-off { height: 56px; background: #262c2b; }
+.hq-bar-on { height: 96px; background: #20413d; }
+.hq-fill { position: absolute; inset: 0; display: block; transform-origin: left center; }
+.hq-bar-off .hq-fill { background: repeating-linear-gradient(135deg, #343b3a 0 6px, #2b3231 6px 12px); }
+.hq-bar-on .hq-fill { background: linear-gradient(90deg, #1aa79c, #5ce0cf 70%, rgba(92, 224, 207, 0)); }
+.faq-ready .hq-fill { transform: scaleX(0); }
+.faq-in .hq-fill { transform: scaleX(1); transition: transform 1.1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.2s; }
+.hq-list { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.hq-list li { display: flex; align-items: center; gap: 10px; font-size: 14px; color: #a3b3b0; }
+.hq-list b { color: #fff; }
+.hq-pip { width: 9px; height: 9px; border-radius: 3px; background: #4a5352; }
+.is-now .hq-pip { background: #5ce0cf; box-shadow: 0 0 0 4px rgba(92, 224, 207, 0.2); animation: hq-pulse 2s ease-in-out infinite; }
+.is-now span { color: #5ce0cf; }
+@keyframes hq-pulse { 50% { box-shadow: 0 0 0 7px rgba(92, 224, 207, 0); } }
+
+.hq-zero { display: flex; align-items: baseline; gap: 4px; margin: 8px 0 14px; font-family: "Unbounded", "Montserrat", system-ui, sans-serif; font-weight: 800; font-size: clamp(76px, 7vw, 104px); line-height: 1; letter-spacing: -0.03em; color: #fff; }
+.hq-zero span { font-size: 0.62em; color: #5ce0cf; }
+.hq-checks { display: grid; gap: 10px; margin: 22px 0 0; padding: 0; list-style: none; }
+.hq-checks li { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 600; color: #e7f1ef; }
+.hq-checks svg { flex: none; color: #5ce0cf; }
+.hq-free .hq-note { margin-top: 0; padding-top: 0; }
+
+@media (max-width: 1100px) {
+  .hq-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hq-free { grid-column: 1 / -1; min-height: 0; }
+}
+@media (max-width: 900px) {
+  .hz-hero { grid-template-columns: 1fr; }
+  .hz-copy h1 { font-size: clamp(28px, 8vw, 46px); }
+  .hz-stats { grid-template-columns: repeat(2, auto); }
+  .hz-ip { grid-column: 1 / -1; }
+}
+@media (max-width: 640px) {
+  .hq-grid { grid-template-columns: 1fr; }
+  .hq-card { min-height: 0; }
+  .hz-play { width: 68px; height: 68px; margin: -34px 0 0 -34px; }
+  .hz-stats { gap: 24px 28px; }
+  .hz-num { font-size: clamp(40px, 15vw, 64px); }
+}
+@media (prefers-reduced-motion: reduce) { .is-now .hq-pip { animation: none; } .hq-fill { transition: none !important; } }
+
+.hz-stats { grid-template-columns: auto auto minmax(0, 1fr); padding-top: 0; }
+.hz-stats::before { margin: 0 0 clamp(34px, 4.6vw, 60px); }
+.hz-stat { align-self: stretch; }
+.hz-stat .hz-sub { margin-top: auto; padding-top: 6px; }
+.hz-ip .hz-num-ip { display: flex; flex: 1; align-items: center; }
+.hz-label .server-status-dot { display: inline-block; flex: none; width: 9px; height: 9px; border-radius: 50%; }
+.hz-label .server-status-dot.is-online { background: #5ce0cf; box-shadow: 0 0 0 4px rgba(92, 224, 207, 0.22), 0 0 12px rgba(92, 224, 207, 0.7); }
+.hz-label .server-status-dot.is-loading { background: #8aa8a4; }
+.hz-label .server-status-dot.is-unavailable { background: #6b7776; }
+.brand-logo.brand-icon img { height: 46px; filter: drop-shadow(0 0 12px rgba(92, 224, 207, 0.65)) brightness(1.12); }
+.site-header.is-scrolled .brand-logo.brand-icon img { height: 42px; }
+@media (max-width: 900px) { .hz-stats { grid-template-columns: repeat(2, auto); } }
+.astrum-home::before { background: radial-gradient(ellipse 46% 66% at 50% 0%, rgba(92, 224, 207, 0.72), rgba(26, 167, 156, 0.26) 46%, transparent 74%); }
+.astrum-home::after { background: radial-gradient(ellipse 46% 66% at 50% 0%, rgba(92, 224, 207, 0.66), rgba(26, 167, 156, 0.24) 46%, transparent 74%); }
+@media (max-width: 900px) { .hz-num-ip { font-size: clamp(18px, 5.2vw, 34px); overflow-wrap: anywhere; } .hz-stat { min-width: 0; } }
+@media (max-width: 900px) { .hz-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+.hz-copy p { font-weight: 500; max-width: 640px; color: rgba(214, 232, 229, 0.7); }
+
+.mq { position: relative; display: grid; gap: 6px; margin: 0 0 clamp(40px, 6vw, 84px); padding: 20px 0; overflow: hidden; border-block: 1px solid rgba(255, 255, 255, 0.09); background: linear-gradient(90deg, rgba(92, 224, 207, 0.05), rgba(92, 224, 207, 0.02) 50%, rgba(92, 224, 207, 0.05)); -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); }
+.mq-row { overflow: hidden; }
+.mq-track { display: flex; width: max-content; animation: mq-run 42s linear infinite; will-change: transform; }
+.mq-rev .mq-track { animation-direction: reverse; animation-duration: 54s; }
+.mq:hover .mq-track { animation-play-state: paused; }
+.mq-group { display: flex; flex: none; align-items: center; }
+.mq-item { padding: 0 clamp(14px, 2vw, 26px); font-family: "Unbounded", "Montserrat", system-ui, sans-serif; font-weight: 800; font-size: clamp(20px, 2.8vw, 40px); line-height: 1.25; letter-spacing: -0.01em; text-transform: uppercase; white-space: nowrap; }
+.mq-fill .mq-item { color: transparent; background: linear-gradient(90deg, #ffffff, #a3f2e6); -webkit-background-clip: text; background-clip: text; }
+.mq-line .mq-item { color: transparent; -webkit-text-stroke: 1.3px rgba(92, 224, 207, 0.8); }
+.mq-star { flex: none; width: clamp(14px, 1.5vw, 20px); height: clamp(14px, 1.5vw, 20px); background: #5ce0cf; clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%); filter: drop-shadow(0 0 6px rgba(92, 224, 207, 0.7)); }
+@keyframes mq-run { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .mq-track { animation: none; } }
+
+.mq { padding: clamp(18px, 2.4vw, 30px) 0; }
+.mq-item { color: transparent; background: linear-gradient(90deg, #ffffff, #a3f2e6); -webkit-background-clip: text; background-clip: text; -webkit-text-stroke: 0; }
+.mq-item:nth-of-type(even) { background: none; -webkit-text-stroke: 1.3px rgba(92, 224, 207, 0.85); }
+.mq-track { animation-duration: 48s; }

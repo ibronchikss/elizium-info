@@ -1,21 +1,10 @@
-/*
- * ELIZIUM — минимальный скрипт для статичной копии сайта.
- * Оригинальный JS (Next.js/React) получить не удалось, поэтому поведение ниже
- * воссоздано по разметке:
- *   - сжатие шапки при прокрутке, мобильное меню, копирование IP, кнопка «Начать играть», индикатор онлайна;
- *   - смена двух скриншотов на главной раз в 5 секунд;
- *   - переключатель светлой/тёмной темы (запоминается в localStorage);
- *   - поиск по правилам и фильтр по наказанию (клик по плашке над правилами);
- *   - магазин: вкладки категорий, поиск по товарам и окно товара (тексты берутся из
- *     <template> в shop.html, покупка ведёт в магазин shop.astrums.pro).
- * Всё, что здесь описано, — реконструкция, а не копия оригинального кода.
- */
+
 (function () {
   "use strict";
 
   var SERVER_IP = "vanillatech.site";
   var STATUS_URL = "https://api.mcsrvstat.us/3/" + SERVER_IP;
-  var STATUS_REFRESH_MS = 5 * 60 * 1000; // как в оригинале: примерно раз в 5 минут
+  var STATUS_REFRESH_MS = 5 * 60 * 1000;
 
   function norm(text) {
     return (text || "").toLowerCase().replace(/ё/g, "е").replace(/\s+/g, " ").trim();
@@ -28,19 +17,16 @@
     return node;
   }
 
-  // --- Шапка: всегда закруглённая «капсула» (стили — extra.css, класс is-scrolled) --
   var siteHeader = document.querySelector(".site-header");
   if (siteHeader) {
     siteHeader.classList.add("is-scrolled");
   }
 
-  // --- Первый заход на главную: шапка появляется, когда начинают прокручивать вниз ---
-  // Класс first-visit ставит скрипт в <head> главной (если в localStorage ещё нет метки astrum-nav-seen).
   var rootEl = document.documentElement;
   if (rootEl.classList.contains("first-visit")) {
     var revealHeader = function () {
       rootEl.classList.remove("first-visit");
-      try { localStorage.setItem("astrum-nav-seen", "1"); } catch (err) { /* без хранилища — просто покажем */ }
+      try { localStorage.setItem("astrum-nav-seen", "1"); } catch (err) {  }
       window.removeEventListener("scroll", onFirstScroll);
       window.removeEventListener("keydown", revealHeader);
       window.removeEventListener("focusin", revealHeader);
@@ -49,14 +35,13 @@
       if ((window.pageYOffset || rootEl.scrollTop || 0) > 40) revealHeader();
     };
     window.addEventListener("scroll", onFirstScroll, { passive: true });
-    window.addEventListener("keydown", revealHeader); // клавиатура (Tab, стрелки) — тоже показать
+    window.addEventListener("keydown", revealHeader);
     window.addEventListener("focusin", revealHeader);
-    onFirstScroll(); // страница могла открыться уже прокрученной
-    // если страница не прокручивается (короткий экран), шапку нужно показать сразу
+    onFirstScroll();
+
     if (rootEl.scrollHeight <= window.innerHeight + 40) revealHeader();
   }
 
-  // --- Мобильное меню -------------------------------------------------------
   var menuButton = document.querySelector(".menu-toggle");
   var nav = document.querySelector(".main-nav");
   if (menuButton && nav) {
@@ -71,7 +56,7 @@
     nav.addEventListener("click", function (e) {
       if (e.target.closest("a")) closeMenu();
     });
-    // меню свёрнуто на всех экранах: закрывается кликом мимо и клавишей Esc
+
     document.addEventListener("click", function (e) {
       if (nav.classList.contains("open") && !nav.contains(e.target) && !menuButton.contains(e.target)) closeMenu();
     });
@@ -83,7 +68,6 @@
     });
   }
 
-  // --- Тема: светлая / тёмная (выбор запоминается; начальную тему ставит скрипт в <head>) ---
   var themeButton = document.querySelector(".theme-toggle");
   if (themeButton) {
     var htmlRoot = document.documentElement;
@@ -98,9 +82,9 @@
     var animTimer = null;
     themeButton.addEventListener("click", function () {
       var next = currentTheme() === "light" ? "dark" : "light";
-      htmlRoot.classList.add("theme-anim"); // плавная смена цветов на 0,4 с
+      htmlRoot.classList.add("theme-anim");
       htmlRoot.setAttribute("data-theme", next);
-      try { localStorage.setItem("astrum-theme", next); } catch (err) { /* режим без хранилища */ }
+      try { localStorage.setItem("astrum-theme", next); } catch (err) {  }
       syncThemeButton();
       clearTimeout(animTimer);
       animTimer = setTimeout(function () { htmlRoot.classList.remove("theme-anim"); }, 450);
@@ -108,7 +92,6 @@
     syncThemeButton();
   }
 
-  // --- Главная: кнопка «Начать играть» -> секция «Первые шаги» -------------
   var playButton = document.querySelector(".hero-actions .button.primary");
   var startSection = document.getElementById("start");
   if (playButton && startSection) {
@@ -117,8 +100,7 @@
     });
   }
 
-  // --- Главная: копирование IP сервера -------------------------------------
-  var addressButton = document.querySelector(".server-address");
+  var addressButton = document.querySelector("[data-copy-ip]");
   if (addressButton) {
     var label = addressButton.querySelector("small");
     var originalLabel = label ? label.textContent : "";
@@ -163,13 +145,15 @@
     });
   }
 
-  // --- Главная: индикатор онлайна ------------------------------------------
   var dot = document.querySelector(".server-status-dot");
   var counter = document.querySelector(".server-online");
 
-  function setStatus(state, text) {
+  var onlineNum = document.querySelector("[data-online-num]");
+
+  function setStatus(state, text, num) {
     if (dot) dot.className = "server-status-dot is-" + state;
     if (counter) counter.textContent = text;
+    if (onlineNum) onlineNum.textContent = num;
   }
 
   function loadStatus() {
@@ -181,13 +165,13 @@
       .then(function (data) {
         if (data && data.online) {
           var players = data.players && typeof data.players.online === "number" ? data.players.online : 0;
-          setStatus("online", "ОНЛАЙН: " + players);
+          setStatus("online", players === 1 ? "игрок онлайн" : "игроков онлайн", players);
         } else {
-          setStatus("unavailable", "СЕРВЕР ОФФЛАЙН");
+          setStatus("unavailable", "сервер оффлайн", "0");
         }
       })
       .catch(function () {
-        setStatus("unavailable", "СТАТУС НЕДОСТУПЕН");
+        setStatus("unavailable", "статус недоступен", "—");
       });
   }
 
@@ -196,7 +180,6 @@
     setInterval(loadStatus, STATUS_REFRESH_MS);
   }
 
-  // --- Главная: полоски в «Вопросах» плавно заполняются, когда блок виден -----
   var faqSection = document.querySelector(".faq");
   if (faqSection) {
     var showFaq = function () { faqSection.classList.add("faq-in"); };
@@ -215,86 +198,6 @@
     }
   }
 
-  // --- Главная: два скриншота под лентой меняются раз в 5 секунд ----------------
-  // Каждый кадр хранит два слоя <img>: новый подгружается под видимым и плавно проявляется.
-  // Оба кадра всегда показывают разные картинки, и обе новые отличаются от тех, что были на экране.
-  var galleryBoxes = Array.prototype.slice.call(document.querySelectorAll(".gallery-item"));
-  if (galleryBoxes.length === 2) {
-    var SLIDE_EVERY_MS = 5000;
-    var SLIDES = [
-      { src: "assets/images/slide-castle.webp", alt: "Замок за садом с розами, фонарями и красным флагом" },
-      { src: "assets/images/slide-domes.webp", alt: "Бирюзовые купола и каменная стена над зелёной долиной" },
-      { src: "assets/images/slide-timber.webp", alt: "Фахверковые дома и цветочные клумбы у лестницы" },
-      { src: "assets/images/slide-sunset.webp", alt: "Город Elizium на закате: фахверковые дома и каменная башня над деревьями" },
-      { src: "assets/images/slide-crystal.webp", alt: "Дом с розовыми кристаллами и башня с водопадом" }
-    ];
-
-    var frames = galleryBoxes.map(function (box) {
-      var front = box.querySelector(".gallery-img");
-      var back = front.cloneNode(false);
-      back.classList.remove("is-active");
-      back.alt = "";
-      back.removeAttribute("src");
-      box.appendChild(back);
-      var current = -1;
-      SLIDES.forEach(function (slide, i) {
-        if (front.getAttribute("src") === slide.src) current = i;
-      });
-      return { front: front, back: back, index: current };
-    });
-
-    var showSlide = function (frame, index) {
-      var incoming = frame.back;
-      var outgoing = frame.front;
-      var done = false;
-      frame.index = index;
-      var reveal = function () {
-        if (done) return;
-        done = true;
-        incoming.classList.add("is-active");
-        outgoing.classList.remove("is-active");
-        frame.front = incoming;
-        frame.back = outgoing;
-      };
-      incoming.onload = reveal;
-      incoming.onerror = function () { done = true; };
-      incoming.alt = SLIDES[index].alt;
-      incoming.src = SLIDES[index].src;
-      if (incoming.complete && incoming.naturalWidth) reveal();
-    };
-
-    var nextSlides = function () {
-      var busy = frames.map(function (frame) { return frame.index; });
-      var free = [];
-      SLIDES.forEach(function (slide, i) {
-        if (busy.indexOf(i) === -1) free.push(i);
-      });
-      for (var i = free.length - 1; i > 0; i--) { // перемешиваем
-        var j = Math.floor(Math.random() * (i + 1));
-        var tmp = free[i];
-        free[i] = free[j];
-        free[j] = tmp;
-      }
-      return free;
-    };
-
-    // подгружаем остальные кадры заранее, когда страница уже открылась
-    window.addEventListener("load", function () {
-      setTimeout(function () {
-        SLIDES.forEach(function (slide) { new Image().src = slide.src; });
-      }, 800);
-    });
-
-    setInterval(function () {
-      if (document.hidden) return;
-      var pick = nextSlides();
-      if (pick.length < 2) return;
-      showSlide(frames[0], pick[0]);
-      setTimeout(function () { showSlide(frames[1], pick[1]); }, 450);
-    }, SLIDE_EVERY_MS);
-  }
-
-  // --- Правила: поиск по пунктам и подсветка раздела в содержании -----------
   var rulesInput = document.querySelector(".rules-search input");
   var rulesContent = document.querySelector(".rules-content");
   if (rulesInput && rulesContent) {
@@ -303,7 +206,7 @@
     var punishButtons = Array.prototype.slice.call(document.querySelectorAll(".rule-filter"));
     var punishReset = document.querySelector(".rule-filter-reset");
     var punishCount = document.querySelector(".rule-filter-count");
-    var activePunish = ""; // класс плашки наказания (chip-mute, chip-ban-perm …) или пусто
+    var activePunish = "";
     var tocLinks = {};
     Array.prototype.forEach.call(document.querySelectorAll(".rules-toc a"), function (link) {
       tocLinks[link.getAttribute("href").slice(1)] = link;
@@ -312,7 +215,6 @@
     emptyRules.hidden = true;
     rulesContent.insertBefore(emptyRules, rulesContent.querySelector(".info-panel"));
 
-    // Поиск по тексту и фильтр по наказанию (клик по плашке над правилами) работают вместе
     var applyRules = function () {
       var query = norm(rulesInput.value);
       var shown = 0;
@@ -330,13 +232,13 @@
           unit.hidden = !hit;
           if (hit) { any = true; matched += 1; }
         });
-        // в блоках без пунктов (например, карточки законопроектов) раздел виден, если есть совпадение в заголовке
+
         var visible = !filtering || any;
         article.hidden = !visible;
         if (tocLinks[article.id]) tocLinks[article.id].hidden = !visible;
         if (visible) shown += 1;
       });
-      // заголовок блока законопроектов прячется, если ни один законопроект не подошёл под поиск
+
       var billsHead = rulesContent.querySelector(".bills-head");
       if (billsHead) billsHead.hidden = filtering && !rulesContent.querySelector("article.bill:not([hidden])");
       emptyRules.hidden = shown !== 0;
@@ -356,7 +258,7 @@
     punishButtons.forEach(function (button) {
       button.addEventListener("click", function () {
         var value = button.getAttribute("data-punish");
-        activePunish = activePunish === value ? "" : value; // повторный клик снимает фильтр
+        activePunish = activePunish === value ? "" : value;
         applyRules();
       });
     });
@@ -367,8 +269,6 @@
       });
     }
 
-    // в содержании подсвечивается раздел, который сейчас на экране
-    // (последний, верх которого уже поднялся выше линии под шапкой; у конца страницы — последний видимый)
     var spyTick = false;
     var spyUpdate = function () {
       spyTick = false;
@@ -391,7 +291,6 @@
     spyUpdate();
   }
 
-  // --- Магазин: категории, поиск и окно товара -----------------------------
   var shopGrid = document.querySelector(".product-grid");
   if (shopGrid) {
     var STORE_URL = "https://shop.astrums.pro/";
@@ -402,7 +301,6 @@
     emptyShop.hidden = true;
     shopGrid.parentNode.insertBefore(emptyShop, shopGrid.nextSibling);
 
-    // В поиск входит и описание товара (текст из <template>), а не только карточка.
     var haystack = {};
     cards.forEach(function (card) {
       var tpl = document.getElementById("product-" + card.getAttribute("data-product"));
@@ -532,7 +430,6 @@
     });
   }
 
-  // --- Мобильная версия: сворачиваемое «Содержание» в правилах и кнопка «Наверх» ---
   var phoneQuery = window.matchMedia("(max-width: 760px)");
   var tocBlocks = Array.prototype.slice.call(document.querySelectorAll(".rules-toc"));
   var setToc = function (toc, collapsed) {
@@ -553,7 +450,7 @@
       if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(); }
     });
     toc.addEventListener("click", function (e) {
-      if (phoneQuery.matches && e.target.closest("a")) setToc(toc, true); // после перехода к разделу список сворачивается
+      if (phoneQuery.matches && e.target.closest("a")) setToc(toc, true);
     });
   });
   var syncToc = function () {
@@ -582,4 +479,67 @@
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
   updateToTop();
+})();
+
+(function () {
+  var input = document.getElementById("qa-search");
+  if (!input) return;
+  var items = Array.prototype.slice.call(document.querySelectorAll(".qa-item"));
+  var groups = Array.prototype.slice.call(document.querySelectorAll(".qa-group"));
+  var empty = document.getElementById("qa-empty");
+  input.addEventListener("input", function () {
+    var q = input.value.trim().toLowerCase();
+    var shown = 0;
+    items.forEach(function (item) {
+      var match = !q || item.textContent.toLowerCase().indexOf(q) !== -1;
+      item.hidden = !match;
+      if (match) shown++;
+      if (q && match) item.open = true;
+    });
+    groups.forEach(function (g) {
+      g.hidden = !g.querySelector(".qa-item:not([hidden])");
+    });
+    if (empty) empty.hidden = shown > 0;
+  });
+})();
+
+(function () {
+  var box = document.querySelector("[data-video]");
+  if (!box) return;
+  var id = box.getAttribute("data-video");
+  var poster = box.querySelector(".hz-poster");
+  if (poster) {
+    var tried = 0;
+    var onFail = function () {
+      tried++;
+      if (tried === 1) poster.src = "https://i.ytimg.com/vi/" + id + "/hqdefault.jpg";
+      else poster.style.display = "none";
+    };
+    poster.addEventListener("error", onFail);
+    if (poster.complete && poster.naturalWidth === 0) onFail();
+    poster.addEventListener("load", function () {
+      if (poster.naturalWidth <= 120) onFail();
+    });
+  }
+  box.addEventListener("click", function (e) {
+    e.preventDefault();
+    var frame = document.createElement("iframe");
+    frame.src = "https://www.youtube-nocookie.com/embed/" + id + "?autoplay=1&rel=0&modestbranding=1";
+    frame.title = "Видео о сервере";
+    frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen";
+    frame.allowFullscreen = true;
+    frame.className = "hz-frame";
+    box.replaceWith(frame);
+  });
+})();
+
+(function () {
+  var cards = document.querySelectorAll(".hq-card");
+  Array.prototype.forEach.call(cards, function (card) {
+    card.addEventListener("pointermove", function (e) {
+      var r = card.getBoundingClientRect();
+      card.style.setProperty("--mx", (e.clientX - r.left) + "px");
+      card.style.setProperty("--my", (e.clientY - r.top) + "px");
+    });
+  });
 })();
