@@ -563,7 +563,7 @@
       var al = p.a * (0.55 + 0.45 * Math.sin(p.ph));
       dustCtx.globalAlpha = al * (light ? 0.75 : 1);
       dustCtx.fillStyle = "rgb(" + (p.c ? c1 : c0) + ")";
-      dustCtx.fillRect(p.x + Math.sin(p.ph) * 10 + p.ox, p.y + p.oy, p.s, p.s);
+      dustCtx.fillRect(Math.round(p.x + Math.sin(p.ph) * 10 + p.ox), Math.round(p.y + p.oy), p.s, p.s);
       keep.push(p);
     }
     dustCtx.globalAlpha = 1;

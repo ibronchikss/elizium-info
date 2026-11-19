@@ -482,8 +482,6 @@ html[data-theme="light"] .bt-big { color: var(--ac); }
 html[data-theme="light"] .bt-big i { background-image: repeating-linear-gradient(90deg, var(--ac) 0 7px, transparent 7px 13px); }
 html[data-theme="light"] .bt-cube { filter: drop-shadow(0 12px 20px color-mix(in srgb, var(--ac) 35%, transparent)); }
 
-html .astrum-site .site-header .brand-word img { height: 28px !important; width: auto !important; max-width: none; filter: drop-shadow(0 0 10px rgba(92, 224, 207, 0.35)); }
-html .astrum-site .site-header .brand-word { padding: 0; background: none; border: 0; box-shadow: none; }
 html .astrum-site .site-header .main-nav a { border: 0; border-radius: 0; background: none; padding: 10px 2px; color: rgba(236, 247, 245, 0.78); font-size: 14px; font-weight: 600; position: relative; transition: color 0.2s ease; }
 html .astrum-site .site-header .main-nav a .nav-icon { display: none; }
 html .astrum-site .site-header .main-nav a:not(.active):hover { color: #fff; background: none; }
@@ -528,8 +526,8 @@ html .astrum-site .site-header .header-cta:hover { background: rgba(92, 224, 207
     max-width: none;
     justify-content: space-between;
     gap: 24px;
-    padding: 10px 12px 10px 20px;
-    border-radius: 22px;
+    padding: 8px 10px 8px 14px;
+    border-radius: 999px;
     border: 1px solid rgba(92, 224, 207, 0.22);
     background: linear-gradient(90deg, rgba(10, 32, 30, 0.82), rgba(5, 12, 12, 0.88) 45%, rgba(10, 32, 30, 0.82));
     box-shadow: 0 14px 44px rgba(0, 0, 0, 0.5), 0 0 40px rgba(92, 224, 207, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.06);
@@ -539,8 +537,7 @@ html .astrum-site .site-header .header-cta:hover { background: rgba(92, 224, 207
   html .astrum-site .site-header .header-tools { margin-left: 0; gap: 10px; }
 }
 @media (max-width: 860px) {
-  html .astrum-site .site-header .brand-word img { height: 24px !important; }
-  html .astrum-site .site-header .main-nav.open a { padding: 12px 6px; font-size: 16px; }
+    html .astrum-site .site-header .main-nav.open a { padding: 12px 6px; font-size: 16px; }
   html .astrum-site .site-header .main-nav.open a::after { bottom: 6px; }
 }
 @media (max-width: 560px) {
@@ -549,8 +546,7 @@ html .astrum-site .site-header .header-cta:hover { background: rgba(92, 224, 207
   .header-cta .cta-arrow { display: none; }
 }
 @media (max-width: 380px) {
-  html .astrum-site .site-header .brand-word img { height: 20px !important; }
-  html .astrum-site .site-header .header-cta { padding: 7px 9px; }
+    html .astrum-site .site-header .header-cta { padding: 7px 9px; }
 }
 
 html[data-theme="light"] .astrum-site .site-header .main-nav a { color: rgba(18, 48, 45, 0.78); }
@@ -558,7 +554,6 @@ html[data-theme="light"] .astrum-site .site-header .main-nav a:not(.active):hove
 html[data-theme="light"] .astrum-site .site-header .main-nav a.active,
 html[data-theme="light"] .astrum-site .site-header.is-scrolled .main-nav a.active { color: #0b3a36 !important; }
 html[data-theme="light"] .astrum-site .site-header .main-nav a::after { background: linear-gradient(90deg, transparent, #14a095 30%, #0f8f86 70%, transparent); box-shadow: 0 0 8px rgba(20, 160, 149, 0.45); }
-html[data-theme="light"] .astrum-site .site-header .brand-word img { filter: drop-shadow(0 2px 6px rgba(10, 90, 85, 0.3)); }
 html[data-theme="light"] .astrum-site .site-header .header-cta { color: #12302d !important; background: rgba(255, 255, 255, 0.6) !important; border: 1px solid rgba(15, 143, 134, 0.4) !important; }
 html[data-theme="light"] .astrum-site .site-header .header-cta:hover { background: rgba(20, 160, 149, 0.14) !important; color: #0b3a36 !important; }
 @media (min-width: 861px) {
@@ -578,3 +573,51 @@ html[data-theme="light"] .astrum-site .site-header.is-scrolled .main-nav a.activ
 html[data-theme="light"] .astrum-site .site-header .main-nav.open a.active { background: none !important; border: 0 !important; }
 
 .bt-ver .bt-big { font-size: clamp(19px, 1.9vw, 26px); margin: 26px 0 8px; }
+
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
+img { image-rendering: -webkit-optimize-contrast; }
+.world-map, .bt-head { image-rendering: pixelated; }
+.bento { --bt-line: rgba(92, 224, 207, 0.32); --bt-ink2: rgba(226, 240, 237, 0.88); }
+html[data-theme="light"] .bento { --bt-line: rgba(15, 143, 134, 0.42); --bt-ink2: rgba(22, 50, 46, 0.9); }
+.bt { box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25); }
+html body .hq-card,
+html body .feature-card,
+html body .social-card,
+html body .product-card { border-color: rgba(92, 224, 207, 0.3); }
+html[data-theme="light"] body .hq-card,
+html[data-theme="light"] body .feature-card,
+html[data-theme="light"] body .social-card,
+html[data-theme="light"] body .product-card { border-color: rgba(15, 143, 134, 0.38); }
+html .astrum-site .site-header { -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+
+html .astrum-home::before,
+html .astrum-home::after {
+  top: -40px;
+  width: 64%;
+  height: 980px;
+  -webkit-mask-image: linear-gradient(#000 0%, rgba(0, 0, 0, 0.7) 45%, transparent 88%);
+  mask-image: linear-gradient(#000 0%, rgba(0, 0, 0, 0.7) 45%, transparent 88%);
+}
+html .astrum-home::before {
+  left: -24%;
+  background:
+    radial-gradient(ellipse 14% 5% at 50% 0%, rgba(214, 255, 250, 0.45), transparent 100%),
+    conic-gradient(from 158deg at 50% 0%, transparent 0 3deg, rgba(92, 224, 207, 0.3) 3.2deg 9deg, transparent 9.3deg 12deg, rgba(122, 234, 219, 0.5) 12.2deg 13.6deg, transparent 13.9deg 17deg, rgba(92, 224, 207, 0.2) 17.2deg 27deg, transparent 27.3deg 31deg, rgba(163, 242, 230, 0.26) 31.2deg 32.4deg, transparent 32.7deg);
+}
+html .astrum-home::after {
+  right: -24%;
+  background:
+    radial-gradient(ellipse 14% 5% at 50% 0%, rgba(214, 255, 250, 0.45), transparent 100%),
+    conic-gradient(from 158deg at 50% 0%, transparent 0 3deg, rgba(163, 242, 230, 0.26) 3.2deg 4.4deg, transparent 4.7deg 8deg, rgba(92, 224, 207, 0.2) 8.2deg 18deg, transparent 18.3deg 21deg, rgba(122, 234, 219, 0.5) 21.2deg 22.6deg, transparent 22.9deg 26deg, rgba(92, 224, 207, 0.3) 26.2deg 32deg, transparent 32.3deg);
+}
+html .astrum-home main::before { background: radial-gradient(ellipse 46% 40% at 24% 36%, rgba(26, 167, 156, 0.1), transparent 70%); }
+html[data-theme="light"] .astrum-home::before,
+html[data-theme="light"] .astrum-home::after { opacity: 0.5; }
+html .astrum-home::before,
+html .astrum-home::after { opacity: 0.7; }
+
+html .astrum-site .site-header .header-cta { border-radius: 999px; padding: 10px 18px; }
+html .astrum-site .site-header .brand-icon img { height: 42px; width: auto; filter: drop-shadow(0 0 10px rgba(92, 224, 207, 0.4)); }
+html[data-theme="light"] .astrum-site .site-header .brand-icon img { filter: drop-shadow(0 2px 8px rgba(10, 90, 85, 0.35)); }
+@media (max-width: 860px) { html .astrum-site .site-header .brand-icon img { height: 36px; } }
+@media (max-width: 560px) { html .astrum-site .site-header .header-cta { border-radius: 999px; } }

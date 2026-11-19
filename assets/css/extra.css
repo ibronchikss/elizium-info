@@ -669,7 +669,7 @@
 }
 
 .social-text small {
-  color: #97aaa8;
+  color: #c0d3d1;
   font-size: 13px;
   line-height: 1.4;
 }
@@ -771,7 +771,7 @@
 }
 
 .rule-highlight small {
-  color: #97aaa8;
+  color: #c0d3d1;
   font-size: 12.5px;
   line-height: 1.5;
 }
@@ -860,7 +860,7 @@
 
 .rules-content .rule-head .rule-lead {
   margin: 6px 0 0;
-  color: #97aaa8;
+  color: #c0d3d1;
   font-size: 13.5px;
   line-height: 1.5;
 }
@@ -905,7 +905,7 @@
 
 .rules-content .rule-body p {
   margin: 0;
-  color: #cddddc;
+  color: #e9f3f1;
   font-size: 14.5px;
   line-height: 1.75;
 }
@@ -930,7 +930,7 @@
 .rule-bullets li {
   position: relative;
   padding-left: 18px;
-  color: #b2c6c4;
+  color: #d6e5e3;
   font-size: 13.5px;
   line-height: 1.65;
 }
@@ -1021,7 +1021,7 @@
 .chip-mute { color: #f3d86d; background: rgba(243, 216, 109, 0.1); border-color: rgba(243, 216, 109, 0.3); }
 .chip-fine { color: #6fe6cb; background: rgba(95, 224, 196, 0.1); border-color: rgba(95, 224, 196, 0.3); }
 .chip-admin { color: #b8fbf5; background: rgba(153,241,233, 0.14); border-color: rgba(153,241,233, 0.35); }
-.chip-tag { color: #b2c6c4; background: #ffffff0a; border-color: #ffffff1a; }
+.chip-tag { color: #d6e5e3; background: #ffffff0a; border-color: #ffffff1a; }
 
 .law-cards {
   display: grid;
@@ -1100,7 +1100,7 @@
 
 .rules-content .rule-info p {
   margin: 4px 0 0;
-  color: #b2c6c4;
+  color: #d6e5e3;
   font-size: 13.5px;
   line-height: 1.7;
 }
@@ -1912,7 +1912,7 @@ html.theme-anim *::after {
 .rules-content .bills-head p {
   max-width: 62ch;
   margin: 12px 0 0;
-  color: #97aaa8;
+  color: #c0d3d1;
   font-size: 14px;
   line-height: 1.7;
 }
@@ -1932,7 +1932,7 @@ html.theme-anim *::after {
   border: 1px solid #ffffff14;
   border-radius: 999px;
   background: #ffffff08;
-  color: #cddddc;
+  color: #e9f3f1;
   font-size: 12.5px;
   font-weight: 700;
   transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
@@ -1958,7 +1958,7 @@ html.theme-anim *::after {
   border-radius: 18px;
   background: #1a2120;
   box-shadow: inset 5px 0 0 var(--bill, #99f1e9);
-  color: #cddddc;
+  color: #e9f3f1;
 }
 
 .bill-badge {
@@ -2024,7 +2024,7 @@ html.theme-anim *::after {
 
 .rules-content .bill-card p {
   margin: 0 0 8px;
-  color: #cddddc;
+  color: #e9f3f1;
   font-size: 14.5px;
   line-height: 1.75;
 }
@@ -2060,7 +2060,7 @@ html.theme-anim *::after {
 }
 
 .bill-card li {
-  color: #cddddc;
+  color: #e9f3f1;
   font-size: 14.5px;
   line-height: 1.7;
 }
@@ -2133,14 +2133,14 @@ html.theme-anim *::after {
 }
 
 .bill-sign li {
-  color: #97aaa8;
+  color: #c0d3d1;
 }
 
 .rules-content .bill-card p.bill-more {
   margin-top: 18px;
   padding-top: 14px;
   border-top: 1px dashed #ffffff1f;
-  color: #97aaa8;
+  color: #c0d3d1;
   font-size: 13.5px;
 }
 
@@ -3106,7 +3106,7 @@ html.first-visit .astrum-site .site-header {
   font-weight: 900;
   letter-spacing: 0.14em;
 }
-.rules-outro span { color: #b2c6c4; font-size: 14px; }
+.rules-outro span { color: #d6e5e3; font-size: 14px; }
 @media (max-width: 760px) {
   .rules-doc { grid-template-columns: 1fr 1fr; }
   .rules-doc > div { padding: 11px 13px; }
@@ -3163,18 +3163,18 @@ html.first-visit .astrum-site .site-header {
 .qa-plus svg { width: 16px; height: 16px; }
 .qa-item[open] .qa-plus { transform: rotate(45deg); color: #04231f; background: var(--planet); border-color: var(--planet); }
 .qa-a { padding: 0 20px 20px 100px; animation: qa-in .3s ease; }
-.qa-a p { margin: 0; max-width: 680px; font-size: 14.5px; line-height: 1.75; color: #b2c6c4; }
+.qa-a p { margin: 0; max-width: 680px; font-size: 14.5px; line-height: 1.75; color: #d6e5e3; }
 .qa-a strong { color: #edf9f8; }
 .qa-addrs { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
 .qa-addr { padding: 7px 12px; font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; font-size: 13px; color: var(--planet); background: rgba(92,224,207,.1); border: 1px solid rgba(92,224,207,.25); border-radius: 10px; user-select: all; }
 @keyframes qa-in { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
-.qa-empty { margin: 0; padding: 26px; text-align: center; color: #b2c6c4; border: 1px dashed rgba(255,255,255,.2); border-radius: 18px; }
+.qa-empty { margin: 0; padding: 26px; text-align: center; color: #d6e5e3; border: 1px dashed rgba(255,255,255,.2); border-radius: 18px; }
 .qa-support { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 22px; margin-top: 44px; padding: 28px; background: linear-gradient(135deg, rgba(92,224,207,.14), rgba(92,224,207,.03)); border: 1px solid rgba(92,224,207,.3); border-radius: 22px; }
 .qa-support-text { display: flex; align-items: center; gap: 18px; }
 .qa-support-ico { flex: none; display: grid; place-items: center; width: 54px; height: 54px; color: #04231f; background: var(--planet); border-radius: 16px; }
 .qa-support-ico svg { width: 26px; height: 26px; }
 .qa-support h3 { margin: 0; font-size: 20px; }
-.qa-support p { margin: 6px 0 0; font-size: 14.5px; color: #b2c6c4; }
+.qa-support p { margin: 6px 0 0; font-size: 14.5px; color: #d6e5e3; }
 .qa-support-actions { display: flex; flex-wrap: wrap; gap: 10px; }
 .qa-support-actions .button svg { width: 18px; height: 18px; }
 .qa-chip { display: inline-flex; align-items: center; gap: 8px; height: 46px; padding: 0 18px; font-size: 14px; font-weight: 700; color: inherit; border: 1px solid rgba(255,255,255,.2); border-radius: 14px; transition: background .2s, border-color .2s, transform .2s; }
@@ -3260,19 +3260,19 @@ html.first-visit .astrum-site .site-header {
 .hq-card:hover::after { opacity: 1; }
 .hq-tag { align-self: flex-start; margin-bottom: 14px; padding: 4px 10px; font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; font-size: 12px; font-weight: 700; color: #5ce0cf; background: rgba(92, 224, 207, 0.1); border: 1px solid rgba(92, 224, 207, 0.25); border-radius: 8px; }
 .hq-card h3 { margin: 0 0 22px; font-size: 19px; font-weight: 800; line-height: 1.25; color: #fff; }
-.hq-note { margin: auto 0 0; padding-top: 18px; font-size: 14px; line-height: 1.65; color: #a3b3b0; }
+.hq-note { margin: auto 0 0; padding-top: 18px; font-size: 14px; line-height: 1.65; color: #c6d6d3; }
 
 .hq-steps { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
 .hq-steps li { position: relative; display: grid; grid-template-columns: 34px 1fr; gap: 14px; padding-bottom: 20px; }
 .hq-steps li:not(:last-child)::before { content: ""; position: absolute; left: 16px; top: 34px; bottom: 2px; width: 2px; background: repeating-linear-gradient(to bottom, rgba(92, 224, 207, 0.45) 0 4px, transparent 4px 8px); }
 .hq-dot { display: grid; place-items: center; width: 34px; height: 34px; font-size: 14px; font-weight: 800; color: #04231f; background: #5ce0cf; border-radius: 10px; }
 .hq-steps strong { display: block; margin-top: 6px; font-size: 15px; color: #fff; }
-.hq-steps p { margin: 5px 0 0; font-size: 13.5px; line-height: 1.6; color: #a3b3b0; }
+.hq-steps p { margin: 5px 0 0; font-size: 13.5px; line-height: 1.6; color: #c6d6d3; }
 
 .hq-bars { display: flex; align-items: flex-end; gap: 10px; height: 150px; margin-bottom: 20px; }
 .hq-bar-col { display: flex; flex: 1; flex-direction: column; justify-content: flex-end; gap: 8px; height: 100%; }
 .hq-bar-wide { flex: 2.2; }
-.hq-bar-top { font-size: 12.5px; color: #a3b3b0; white-space: nowrap; }
+.hq-bar-top { font-size: 12.5px; color: #c6d6d3; white-space: nowrap; }
 .hq-now { font-weight: 800; color: #fff; }
 .hq-bar { position: relative; display: block; overflow: hidden; border-radius: 8px; }
 .hq-bar-off { height: 56px; background: #262c2b; }
@@ -3283,7 +3283,7 @@ html.first-visit .astrum-site .site-header {
 .faq-ready .hq-fill { transform: scaleX(0); }
 .faq-in .hq-fill { transform: scaleX(1); transition: transform 1.1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.2s; }
 .hq-list { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
-.hq-list li { display: flex; align-items: center; gap: 10px; font-size: 14px; color: #a3b3b0; }
+.hq-list li { display: flex; align-items: center; gap: 10px; font-size: 14px; color: #c6d6d3; }
 .hq-list b { color: #fff; }
 .hq-pip { width: 9px; height: 9px; border-radius: 3px; background: #4a5352; }
 .is-now .hq-pip { background: #5ce0cf; box-shadow: 0 0 0 4px rgba(92, 224, 207, 0.2); animation: hq-pulse 2s ease-in-out infinite; }
