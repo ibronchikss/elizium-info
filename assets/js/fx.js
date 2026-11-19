@@ -238,18 +238,7 @@
     word.alt = "";
     word.width = 1118;
     word.height = 225;
-    var bar = el("div", "fx-boot-bar");
-    bar.setAttribute("aria-hidden", "true");
-    var segs = [];
-    for (var b = 0; b < 24; b++) { var sg = el("i"); bar.appendChild(sg); segs.push(sg); }
-    var meta = el("div", "fx-boot-meta");
-    var lab = el("span", null, "Сборка мира");
-    var pct = el("span", null, "0%");
-    meta.appendChild(lab);
-    meta.appendChild(pct);
     ui.appendChild(word);
-    ui.appendChild(bar);
-    ui.appendChild(meta);
     var skip = el("button", "fx-boot-skip", "Пропустить");
     skip.type = "button";
     ov.appendChild(cv);
@@ -299,7 +288,6 @@
 
     var tAssemble = 2.0, tExit = 2.75, exitDur = 1.05;
     var t0 = 0, last = 0, done = false, exiting = false, offset = 0;
-    var filled = -1;
 
     function finish() {
       if (done) return;
@@ -333,7 +321,6 @@
       if (t >= tExit && !exiting) {
         exiting = true;
         ov.classList.add("out");
-        lab.textContent = "Готово";
       }
 
       if (exiting) {
@@ -352,14 +339,6 @@
 
       var flash = clamp((t - tAssemble) / 0.7, 0, 1);
       var pulse = t > tAssemble ? 1 + Math.sin(clamp((t - tAssemble) / 0.7, 0, 1) * Math.PI) * 0.06 : 1;
-      var pr = clamp(t / (tAssemble + 0.2), 0, 1);
-      var shown = Math.floor(pr * 100);
-      pct.textContent = shown + "%";
-      var fillN = Math.floor(pr * segs.length);
-      if (fillN !== filled) {
-        for (var z = 0; z < segs.length; z++) segs[z].className = z < fillN ? "on" : "";
-        filled = fillN;
-      }
       if (t > 1.0) word.classList.add("show");
 
       for (var c = 0; c < cells.length; c++) {
@@ -615,37 +594,6 @@
     document.documentElement.addEventListener("mouseleave", function () { g.classList.remove("on"); });
   }
 
-  function initXp() {
-    var box = el("div");
-    box.id = "fx-xp";
-    box.setAttribute("aria-hidden", "true");
-    var lv = el("div", null, "0");
-    lv.id = "fx-xp-lv";
-    var bar = el("div");
-    bar.id = "fx-xp-bar";
-    var segs = [];
-    for (var i = 0; i < 20; i++) { var s = el("i"); bar.appendChild(s); segs.push(s); }
-    box.appendChild(lv);
-    box.appendChild(bar);
-    document.body.appendChild(box);
-    var ticking = false, last = -1;
-    function update() {
-      ticking = false;
-      var max = Math.max(1, root.scrollHeight - window.innerHeight);
-      var pr = clamp((window.pageYOffset || root.scrollTop || 0) / max, 0, 1);
-      box.classList.toggle("on", pr > 0.004 && max > 240);
-      var v = pr * 20, full = Math.floor(v), half = v - full > 0.5;
-      var key = full * 2 + (half ? 1 : 0);
-      if (key === last) return;
-      last = key;
-      for (var j = 0; j < segs.length; j++) segs[j].className = j < full ? "f" : (j === full && half ? "h" : "");
-      lv.textContent = String(Math.round(pr * 100));
-    }
-    window.addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
-    window.addEventListener("resize", update);
-    update();
-  }
-
   function initTilt() {
     if (reduce || !fine) return;
     var sel = ".bt, .hq-card, .product-card, .feature-card, .social-card";
@@ -774,7 +722,6 @@
   function ready() {
     safe(setupAsm);
     safe(initTimeline);
-    safe(initXp);
     safe(initCopy);
     safe(initKonami);
     safe(initReplay);
